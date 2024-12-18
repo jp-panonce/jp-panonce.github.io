@@ -1275,3 +1275,9 @@ section,
 }
 
 .download-btn { display: inline-block; padding: 10px 20px; font-size: 16px; color: #fff; background-color: #007bff; border: none; border-radius: 5px; text-decoration: none; text-align: center; cursor: pointer; transition: background-color 0.3s ease; } .download-btn:hover { background-color: #0056b3; }
+
+.tag { display: inline-block; padding: 5px 10px; font-size: 14px; color: #fff; background-color: #007bff; border-radius: 15px; margin: 5px; }
+
+.rounded-button { display: inline-block; padding: 10px 20px; font-size: 16px; color: #fff; background-color: #28a745; border: none; border-radius: 25px; text-decoration: none; text-align: center; cursor: pointer; transition: background-color 0.3s ease; } 
+
+.rounded-button:hover { background-color: #218838; }
