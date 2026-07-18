@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Analysis of NW Pacific Typhoons</title>
+  <title>Skill | UI Design</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,7 +29,7 @@
 
 </head>
 
-<body class="desktop-nav-collapsed portfolio-details-page">
+<body class="desktop-nav-collapsed service-details-page">
 
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle bi bi-list" title="Toggle sidebar"></i>
@@ -52,11 +52,11 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="../index.html" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+        <li><a href="../index.html#hero"><i class="bi bi-house navicon"></i>Home</a></li>
         <li><a href="../index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
         <li><a href="../index.html#resume"><i class="bi bi-file-earmark-text navicon"></i>Experience</a></li>
         <li><a href="../index.html#portfolio"><i class="bi bi-images navicon"></i>Portfolio</a></li>
-        <li><a href="../index.html#skills"><i class="bi bi-hdd-stack navicon"></i> Skills</a></li>
+        <li><a href="../index.html#skills" class="active"><i class="bi bi-hdd-stack navicon"></i> Skills</a></li>
         <li><a href="../index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
       </ul>
     </nav>
@@ -68,111 +68,85 @@
     <!-- Page Title -->
     <div class="page-title dark-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Analysis of NW Pacific Typhoons</h1>
+        <h1 class="mb-2 mb-lg-0">Skills</h1>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../index.html#portfolio">Portfolio</a></li>
-            <li class="current">Analysis of NW Pacific Typhoons</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Skills</a></li>
+            <li class="current">Design</li>
           </ol>
         </nav>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Portfolio Details Section -->
-    <section id="portfolio-details" class="portfolio-details section">
-      
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section">
 
-        <!-- <p>Back to Portfolio</p> -->
-        <div style="margin-bottom: 40px;">
-          <a href="../index.html#portfolio" title="More Details" style="color: rgb(175, 175, 175);"><i class="bi-arrow-left"></i> Back to Portfolio</a>  
-        </div>
+      <div class="container">
+
         <div class="row gy-4">
 
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper init-swiper">
-
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="../assets/img/portfolio/nw_typhoons_cover.png" alt="">
-                </div>
-
-                <!-- <div class="swiper-slide">
-                  <img src="../assets/img/portfolio/TrigoFunctionsVisualized.png" alt="">
-                </div> -->
-
-              </div>
-              <div class="swiper-pagination"></div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+              <a href="#">App Development</a>
+              <a href="#" class="active">UI Design</a>
+              <a href="#">Automation</a>
+              <a href="#">Software Testing</a>
+              <a href="skills-details-data.html">Data Engineering and Analytics</a>
+              <a href="#">Project Management</a>
             </div>
+
+            <h6><b>Tools</b></h6>
+            <div>
+              <img src="../assets/img/sk_CSS.png" width="7%">
+              <img src="../assets/img/sk_Adobe_Photoshop.png" title="Adobe Photoshop" width="7%"/>
+              <img src="../assets/img/sk_Adobe_XD.png" title="Adobe XD" width="7%"/>
+              <img src="../assets/img/sk_Figma.png" title="Figma" width="7%"/>
+            </div>
+
+            
+
           </div>
 
-          <div class="col-lg-4">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Category</strong>: Dashboard, Educational, Data Analysis</li>
-                <!-- <li><strong>Client</strong>: -</li> -->
-                <li><strong>Project Date</strong>: 04 August, 2024</li>
-                <br>
-              </ul>
-              <div style="display:flex;align-items: center;justify-content: center;">
-              <a href="https://public.tableau.com/app/profile/john.paul.panonce/viz/AnAnalysisofTyphoonsintheNWPacificBasin/PATTERNS" target="_blank" class="rounded-button">Open in Tableau Public</a>
-              </div>
-            </div>
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-              <h2>Analysis of NW Pacific Typhoons</h2>
-              <div>
-                <img src="../assets/img/tableau_logo.png" width="4%">
-                <img src="../assets/img/sk_MS_Excel.png" width="4%">
-              </div>
-              <br>
-              <p>
-                A viz of a detailed analysis of typhoon-prone NW Pacific. This is one of my first tableau dashboards I created as a side-project
-              </p>
-              <p>Check my project <a href="https://jps-eudaimonia.vercel.app/projects/typhoons-of-nw-pacific/" target="_blank">blog-post</a> for more details. </p>
-
-              
-            </div>
-          </div>
-          <div>
-            <p style=" color: rgb(199, 195, 195); text-align: center; margin-top: 20px;">
-              ▼ Scroll for more details ▼
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <!-- <img src="../assets/img/ToledoSunset.jpg" alt="" class="img-fluid services-img"> -->
+            <h3>I Develop Applications</h3>
+            <p>
+              I can help develop the front-end and back-end of websites and applications. I have experience in developing mobile applications for Android using Java and Kotlin, as well as web applications using HTML, CSS, JavaScript, and React. I also have experience in developing desktop applications using Python and C++.
             </p>
-            <br>
-            <h4>Project Purpose and Goal</h4>
-            <h4>Problems and Thought Process</h4>
-            <h4>Implementation</h4>
-            <h5>Data Collection</h5>
-            <h4>Lessons Learned</h4>
+            <!-- <ul>
+              <li><i class="bi bi-check-circle"></i> <span>Aut eum totam accusantium voluptatem.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Assumenda et porro nisi nihil nesciunt voluptatibus.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea</span></li>
+            </ul>
+            <p>
+              Est reprehenderit voluptatem necessitatibus asperiores neque sed ea illo. Deleniti quam sequi optio iste veniam repellat odit. Aut pariatur itaque nesciunt fuga.
+            </p>
+            <p>
+              Sunt rem odit accusantium omnis perspiciatis officia. Laboriosam aut consequuntur recusandae mollitia doloremque est architecto cupiditate ullam. Quia est ut occaecati fuga. Distinctio ex repellendus eveniet velit sint quia sapiente cumque. Et ipsa perferendis ut nihil. Laboriosam vel voluptates tenetur nostrum. Eaque iusto cupiditate et totam et quia dolorum in. Sunt molestiae ipsum at consequatur vero. Architecto ut pariatur autem ad non cumque nesciunt qui maxime. Sunt eum quia impedit dolore alias explicabo ea.
+            </p> -->
           </div>
 
         </div>
 
       </div>
 
-    </section><!-- /Portfolio Details Section -->
-
+    </section><!-- /Service Details Section -->
 
   </main>
 
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        
+      </div>
+      <div class="credits">
+        
+      </div>
+    </div>
+
+  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

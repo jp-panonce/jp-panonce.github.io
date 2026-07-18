@@ -13,13 +13,28 @@
    * Header toggle
    */
   const headerToggleBtn = document.querySelector('.header-toggle');
+  const header = document.querySelector('#header');
 
   function headerToggle() {
-    document.querySelector('#header').classList.toggle('header-show');
+    if (window.innerWidth >= 1200) {
+      document.body.classList.toggle('desktop-nav-collapsed');
+      return;
+    }
+
+    header.classList.toggle('header-show');
     headerToggleBtn.classList.toggle('bi-list');
     headerToggleBtn.classList.toggle('bi-x');
   }
+
   headerToggleBtn.addEventListener('click', headerToggle);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1200) {
+      header.classList.remove('header-show');
+      headerToggleBtn.classList.add('bi-list');
+      headerToggleBtn.classList.remove('bi-x');
+    }
+  });
 
   /**
    * Hide mobile nav on same-page/hash links
@@ -99,9 +114,9 @@
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
+      typeSpeed: 50,
+      backSpeed: 20,
+      backDelay: 10
     });
   }
 

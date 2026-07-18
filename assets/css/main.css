@@ -215,6 +215,43 @@ h6 {
   }
 }
 
+@media (min-width: 1200px) {
+  body.desktop-nav-collapsed .header {
+    width: 80px;
+    padding: 0 10px;
+  }
+
+  body.desktop-nav-collapsed .header ~ main,
+  body.desktop-nav-collapsed .header ~ #footer {
+    margin-left: 80px;
+  }
+
+  body.desktop-nav-collapsed .header .profile-img,
+  body.desktop-nav-collapsed .header .logo h1,
+  body.desktop-nav-collapsed .header .social-links,
+  body.desktop-nav-collapsed .header .navmenu a span,
+  body.desktop-nav-collapsed .header .navmenu a .toggle-dropdown {
+    display: none;
+  }
+
+  body.desktop-nav-collapsed .header .logo {
+    margin-bottom: 8px;
+  }
+
+  body.desktop-nav-collapsed .header .navmenu a,
+  body.desktop-nav-collapsed .header .navmenu a:focus {
+    justify-content: center;
+    padding: 14px 0;
+    font-size: 0;
+  }
+
+  body.desktop-nav-collapsed .header .navmenu a .navicon,
+  body.desktop-nav-collapsed .header .navmenu a:focus .navicon {
+    margin-right: 0;
+    font-size: 22px;
+  }
+}
+
 @media (max-width: 1199px) {
   .header {
     left: -100%;
@@ -241,6 +278,18 @@ h6 {
   right: 15px;
   z-index: 9999;
   transition: background-color 0.3s;
+}
+
+@media (min-width: 1200px) {
+  .header .header-toggle {
+    top: 15px;
+    left: 280px;
+    right: auto;
+  }
+
+  body.desktop-nav-collapsed .header .header-toggle {
+    left: 75px;
+  }
 }
 
 .header .header-toggle:hover {
@@ -1387,3 +1436,60 @@ section,
   display:none;
 }
 
+/* -------------------- */
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4:-webkit-details-marker {
+  display: none;
+}
