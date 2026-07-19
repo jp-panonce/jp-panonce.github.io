@@ -16,6 +16,10 @@
   const header = document.querySelector('#header');
 
   function headerToggle() {
+    if (!headerToggleBtn || !header) {
+      return;
+    }
+
     if (window.innerWidth >= 1200) {
       document.body.classList.toggle('desktop-nav-collapsed');
       return;
@@ -26,10 +30,12 @@
     headerToggleBtn.classList.toggle('bi-x');
   }
 
-  headerToggleBtn.addEventListener('click', headerToggle);
+  if (headerToggleBtn) {
+    headerToggleBtn.addEventListener('click', headerToggle);
+  }
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1200) {
+    if (window.innerWidth >= 1200 && headerToggleBtn && header) {
       header.classList.remove('header-show');
       headerToggleBtn.classList.add('bi-list');
       headerToggleBtn.classList.remove('bi-x');
@@ -114,9 +120,9 @@
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 50,
-      backSpeed: 20,
-      backDelay: 10
+      typeSpeed: 70,
+      backSpeed: 30,
+      backDelay: 400
     });
   }
 

@@ -152,7 +152,7 @@ h6 {
   left: 0;
   bottom: 0;
   padding: 0 15px;
-  width: 300px;
+  width: 250px;
   transition: all ease-in-out 0.3s;
   overflow-y: auto;
   z-index: 997;
@@ -208,22 +208,108 @@ h6 {
   background: var(--accent-color);
 }
 
+.topnav-page #header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  width: 100%;
+  min-height: 84px;
+  padding: 14px 24px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: visible;
+  border-right: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--default-color), transparent 92%);
+  z-index: 1000;
+}
+
+.topnav-page #header ~ main,
+.topnav-page #header ~ #footer {
+  margin-left: 0;
+}
+
+.topnav-page #header .profile-img,
+.topnav-page #header .header-toggle {
+  display: none;
+}
+
+.topnav-page #header .logo {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.topnav-page #header .logo img {
+  max-height: 40px;
+}
+
+.topnav-page #header .navmenu {
+  flex: 1 1 520px;
+}
+
+.topnav-page #header .navmenu ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 0;
+}
+
+.topnav-page #header .navmenu a,
+.topnav-page #header .navmenu a:focus {
+  width: auto;
+  padding: 10px 14px;
+  border-radius: 999px;
+}
+
+.topnav-page #header .navmenu a .navicon,
+.topnav-page #header .navmenu a:focus .navicon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.topnav-page #header .navmenu a .toggle-dropdown,
+.topnav-page #header .navmenu a:focus .toggle-dropdown {
+  display: none;
+}
+
+.topnav-page #header .navmenu a:hover,
+.topnav-page #header .navmenu .active,
+.topnav-page #header .navmenu .active:focus {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 82%);
+}
+
+.topnav-page #header .social-links {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.topnav-page section {
+  scroll-margin-top: 110px;
+}
+
 @media (min-width: 1200px) {
   .header ~ main,
   .header ~ #footer {
-    margin-left: 300px;
+    margin-left: 250px;
   }
 }
 
 @media (min-width: 1200px) {
   body.desktop-nav-collapsed .header {
-    width: 80px;
+    width: 50px;
     padding: 0 10px;
   }
 
   body.desktop-nav-collapsed .header ~ main,
   body.desktop-nav-collapsed .header ~ #footer {
-    margin-left: 80px;
+    margin-left: 50px;
   }
 
   body.desktop-nav-collapsed .header .profile-img,
