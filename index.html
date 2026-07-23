@@ -9,7 +9,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/Test JP Logo (2).png" rel="icon">
+  <link href="assets/jp_logo_light.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -28,18 +28,23 @@
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
-<body class="desktop-nav index-page">
+<body class="desktop-nav topnav-page">
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle bi bi-list" title="Toggle sidebar"></i>
-
-    <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
-    </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <h1 class="sitename">JP. Panonce</h1>      
+  <header id="header" class="header dark-background topnav-header" style="background: transparent !important; position: absolute; top: 0; left: 0; width: 100%; z-index: 1000;">
+    <a href="index.html" class="logo d-flex align-items-end">
+      <img src="assets/jp_logo_light.png" alt="JP. Panonce logo" style="scale: 120%;">
+      <!-- <h1 class="sitename" style="font-size:large;"> .me</h1> -->
     </a>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="about-me.html"><i class="bi bi-person navicon"></i>About Me</a></li>
+        <li><a href="blog-home.html"><i class="bi bi-file-earmark-text navicon"></i>Blog</a></li>
+        <li><a href="portfolio-details.html"><i class="bi bi-images navicon"></i>Creations</a></li>
+        <li><a href="tools.html"><i class="bi bi-hdd-stack navicon"></i>Tools</a></li>
+        <!-- <li><a href="#contact"><i class="bi bi-envelope navicon"></i>Contact</a></li> -->
+      </ul>
+    </nav>
 
     <div class="social-links text-center">
       <a href="https://github.com/jp-panonce" target="_blank" class="github"><i class="bi bi-github"></i></a>
@@ -47,24 +52,12 @@
       <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
     </div>
 
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="index.html" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-
-
-        <li class="dropdown"><a href="about-me.html"><i class="bi bi-menu-button navicon"></i> <span>About Me</span> <i></i></a></li>
-        <li><a href="blog-home.html"><i class="bi bi-file-earmark-text navicon"></i>Blog</a></li>
-        <li><a href="portfolio-details.html"><i class="bi bi-images navicon"></i>Creations</a></li>
-        <!-- <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li> -->
-      </ul>
-    </nav>
-
   </header>
 
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background" style="min-height: 50vh; height: 50vh;">
+    <section id="hero" class="hero section dark-background" style="min-height: 100vh; height: 100vh;">
 
       <img src="assets/img/cover.jpeg" alt="" data-aos="fade-in" class="">
 
@@ -76,62 +69,105 @@
 
     </section><!-- /Hero Section -->
 
-    <!-- About Section -->
-    <section id="about" class="about section light-background">
-      
+    <!-- Welcome Section -->
+    <section id="interests" class="interests section dark-background">
+
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        
-        <h2>About this site</h2>
-      </div>
-      
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        
-        <div class="row gy-2 justify-content-center">
-          <div class="col-lg-4">
-            <br>
-          </div>
-          <div class="col-lg-8 content">
-            <p>
-              This is my personal website where I showcase whatever I want to let out. This serves as a platform for me to share my thoughts, experiences, and creations with the world. 
-              <br>Feel free to explore and connect with me through the provided links.
-            </p>
-            
-          </div>
+        <h2>Welcome to my site!</h2>
+        <!-- <div><span>In my personal time, these things keep me sane</span> <span class="description-title"></span></div> -->
+        <em>
+          This is my personal website where I showcase whatever I want to let out and 'brag'. This serves as a platform for me to share my thoughts, experiences, and creations with the world. 
+          
+        </em>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item feature-with-detail">
+              <i class="bi bi-person" style="color: #ffbb2c;"></i>
+              <h3><a href="about-me.html" class="stretched-link">About Me</a></h3>
+              <p class="feature-detail">Learn more about who I am</p>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="features-item feature-with-detail">
+              <i class="bi bi-journal-text" style="color: #5578ff;"></i>
+              <h3><a href="blog-home.html" class="stretched-link">jp's eudaimonia</a></h3>
+              <p class="feature-detail">Take a peek on my own thoughts and experiences</p>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="features-item feature-with-detail">
+              <i class="bi bi-palette" style="color: #e80368;"></i>
+              <h3><a href="portfolio-details.html" class="stretched-link">My Creations</a></h3>
+              <p class="feature-detail">Explore my creative works and projects</p>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="features-item feature-with-detail">
+              <i class="bi bi-tools" style="color: #8512c7;"></i>
+              <h3><a href="tools.html" class="stretched-link">My Tools</a></h3>
+              <p class="feature-detail">Discover the tools I use in my projects</p>
+            </div>
+          </div><!-- End Feature Item -->
+
         </div>
 
       </div>
+    </section><!-- /Interests Section -->
 
-    </section>
+        <!-- Stats Section -->
+    <section id="stats" class="stats section dark-background">
 
-    <!-- About Section -->
-    <section id="about" class="about section">
-      
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-      <h2>Latest Content</h2>
-        
-      </div><!-- End Section Title -->
-      
       <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Blog Posts</strong> <span> on my experiences, thoughts and more.</span><br>> <a href="blog-home.html">jp's eudaimonia</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Creations </strong> of programming experience<span></span></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="3" class="purecounter"></span>
+              <p><strong>Apps & Tools</strong> you can use or just for fun<span></span></p>
+            </div>
+          </div>
+
+        </div>
+
         
+
       </div>
 
     </section>
 
-        
-
-    
-    
-
     <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
+    <section id="contact" class="contact section dark-background">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
         <p>If you’re interested or have any questions, feel free to reach out to me via my social media profiles or contact details.</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -185,10 +221,10 @@
 
         </div>
 
-      </div>
+      </div> 
       <br><br><br><br><br><br>
 
-    </section><!-- /Contact Section -->
+    </section>
 
   </main>
 

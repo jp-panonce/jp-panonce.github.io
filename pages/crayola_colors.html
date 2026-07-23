@@ -9,7 +9,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/test JP Logo.png" rel="icon">
+  <link href="../assets/jp_logo_light.png" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -29,44 +29,37 @@
 
 </head>
 
-<body class="desktop-nav-collapsed portfolio-details-page">
+<body class="index-page topnav-page">
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle bi bi-list" title="Toggle sidebar"></i>
-
-    <div class="profile-img">
-      <img src="../assets/img/my-profile-img.png" alt="" class="img-fluid rounded-circle">
-    </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
-      <!-- <img src="../assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">John Paul Panonce</h1>
+  <header id="header" class="header dark-background topnav-header">
+    <a href="index.html" class="logo d-flex align-items-end">
+      <img src="../assets/jp_logo_light.png" alt="JP. Panonce logo" style="scale: 120%;">
+      <h1 class="sitename" style="font-size:large;">.creations</h1>
     </a>
-
-    <div class="social-links text-center">
-      <a href="https://github.com/jp-panonce" target="_blank" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://www.instagram.com/jpasensi/" target=”_blank” class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-    </div>
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="../index.html" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="../index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="../index.html#resume"><i class="bi bi-file-earmark-text navicon"></i>Experience</a></li>
-        <li><a href="../index.html#portfolio"><i class="bi bi-images navicon"></i>Portfolio</a></li>
-        <li><a href="../index.html#skills"><i class="bi bi-hdd-stack navicon"></i> Skills</a></li>
-        <li><a href="../index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        <li><a href="index.html"><i class="bi bi-house navicon"></i></a></li>
+        <li><a href="#applications"><i class="bi bi-person navicon"></i>Apps</a></li>
+        <li><a href="#data_solutions"><i class="bi bi-file-earmark-text navicon"></i>Data</a></li>
+        <li><a href="#digital_products"><i class="bi bi-images navicon"></i>Digital Products</a></li>
+        <!-- <li><a href="#skills"><i class="bi bi-hdd-stack navicon"></i>Skills</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i>Contact</a></li> -->
       </ul>
     </nav>
+
+    <div class="social-links text-center">
+      <a href="https://github.com/jp-panonce" target="_blank" class="github"><i class="bi bi-github"></i></a>
+      <a href="https://www.instagram.com/jpasensi/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    </div>
 
   </header>
 
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background">
+    <!-- <div class="page-title dark-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
         <h1 class="mb-2 mb-lg-0">The Crayola Colors</h1>
         <nav class="breadcrumbs">
@@ -77,19 +70,23 @@
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div> -->
 
     <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
-      
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
         <!-- <p>Back to Portfolio</p> -->
         <div style="margin-bottom: 40px;">
-          <a href="../index.html#portfolio" title="More Details" style="color: rgb(175, 175, 175);"><i class="bi-arrow-left"></i> Back to Portfolio</a>  
+          <a href="../portfolio-details.html#data_solutions" title="More Details" style="color: rgb(175, 175, 175);"><i class="bi-arrow-left"></i> Back to Portfolio</a>  
         </div>
+        <h2>The Crayola Colors</h2>
+        <p>Look at all the colors of the standard 16-box crayola along with the production history of each color with this tableau dashboard.</p>
+      </div><!-- End Section Title -->
+      
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
-
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper init-swiper">
 
@@ -123,21 +120,26 @@
               <div class="swiper-pagination"></div>
             </div>
           </div>
+          
 
           <div class="col-lg-4">
+            <br><br>
             <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
               <h3>Project information</h3>
               <ul>
                 <li><strong>Category</strong>: Dashboard</li>
-                <!-- <li><strong>Client</strong>: -</li> -->
                 <li><strong>Project Date</strong>: 15 October, 2024</li>
+                <li><strong>Tools:</strong>
+                  <img src="../assets/img/sk_Tableau.svg" width="5%">
+                  <img src="../assets/img/sk_MS_Excel.png" width="5%">
+                </li>
               </ul>
-              <br>
+              <br><br><br><br>
               <div style="display:flex;align-items: center;justify-content: center;">
               <a href="https://public.tableau.com/app/profile/john.paul.panonce/viz/crayola_colors/16-Box" target="_blank" class="rounded-button">Open in Tableau Public</a>
               </div>
             </div>
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+            <!-- <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
               <h2>The Crayola Colors</h2>
               <div>
                 <img src="../assets/img/sk_Tableau.svg" width="4%">
@@ -150,7 +152,7 @@
               <p>Check my project <a href="https://jps-eudaimonia.vercel.app/projects/the-crayola-colors-dashboard/" target="_blank">blog-post</a> for more details. </p>
 
               
-            </div>
+            </div> -->
           </div>
 
         </div>

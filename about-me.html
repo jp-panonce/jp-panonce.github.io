@@ -9,7 +9,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/Test JP Logo (2).png" rel="icon">
+  <link href="assets/jp_logo_light.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -39,7 +39,7 @@
     <nav id="navmenu" class="navmenu">
       <ul>
         <li><a href="index.html"><i class="bi bi-house navicon"></i></a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i>About Me</a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i>Who am I?</a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i>Experience</a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i>Projects</a></li>
         <li><a href="#skills"><i class="bi bi-hdd-stack navicon"></i>Skills</a></li>
@@ -75,34 +75,56 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
+        <h2>Who am I?</h2>
         
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-2 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/me.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 content">
-            <br>
-            <h2>Hi there, I'm JP. </h2>
-            <br>
-            <p>I started coding way back in high school and I never stopped since then. I was powered by people and problems big or small. I take complexity as a challenge. </p>
-            <p class="py-3">
-              I say my superpower is <em><b>[materialize]</b></em> - I materialize ideas, and turn them into real usable solutions that actually help.
-              <br>
-              When I’m not at my computer, I like to spend my time reading, keeping fit and playing guitar.
+        <div class="about-mosaic">
+          <article class="mosaic-card card-intro span-7 span-rows-2">
+            <p class="kicker">Hello, I am JP</p>
+            <h3>Builder of ideas into practical, usable tools.</h3>
+            <p>
+              I started coding in high school and kept going because solving real problems never gets old. I like shipping things that are simple for people to use but robust behind the scenes.
             </p>
-            <p>To know me more, feel free to explore and read my thoughts in my <a href="blog-home.html" target="_blank">blog</a> or check out my projects.</p>
-            
-            <br>
-            <p> • ^__^</p>
-            <h6><b>John Paul Panonce</b></h6>
-          </div>
-        </div>
+            <p>
+              Outside coding, I recharge with music, fitness, and long-form reading.
+            </p>
+          </article>
 
+          <article class="mosaic-card card-photo span-5 span-rows-2">
+            <img src="assets/img/me.png" class="img-fluid" alt="Portrait of John Paul Panonce">
+            <p class="caption">I'm from Cebu, Philippines, roughly <b><em>14,800</em></b> km away from your current location, according to your IP address.</p>
+          </article>
+
+          <article class="mosaic-card card-fact span-4">
+            <h4>Current focus</h4>
+            <p>Automation, data engineering, and full-stack tools with measurable impact.</p>
+          </article>
+
+          <article class="mosaic-card card-svg span-4">
+            <h4>Interactive SVG sample</h4>
+            <svg class="sample-orbit" viewBox="0 0 180 120" role="img" aria-label="Animated orbit illustration">
+              <defs>
+                <linearGradient id="orbitStroke" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#19d3da"/>
+                  <stop offset="100%" stop-color="#4d6bff"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="90" cy="60" rx="64" ry="30" class="orbit-path"/>
+              <circle cx="90" cy="60" r="12" class="orbit-core"/>
+              <g class="satellite-wrap">
+                <circle cx="154" cy="60" r="6" class="satellite"/>
+              </g>
+            </svg>
+            <p class="caption">Hover this card to animate the orbit.</p>
+          </article>
+
+          <article class="mosaic-card card-links span-4">
+            <h4>Read more</h4>
+            <p>Browse my <a href="blog-home.html" target="_blank">blog</a> for thoughts and learnings, or continue to the projects section below.</p>
+          </article>
+        </div>
       </div>
 
     </section><!-- /About Section -->
@@ -114,7 +136,6 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up" style="display: flex;flex-direction: row; align-items: center; justify-content: space-between;">
         <h2>Experience</h2>
-        <a class="button-4" href="Panonce, John Paul - Resume.pdf" target="_blank">DOWNLOAD CV</a>
       </div>
 
 
@@ -206,9 +227,10 @@
           </div>
 
         </div>
-
+        <br>
+        <br>
+        <a class="button-4" href="Panonce, John Paul - Resume.pdf" target="_blank" style="display: block; width: fit-content; margin: 0 auto;">DOWNLOAD CV</a>
       </div>
-
     </section>
 
     <!-- Stats Section -->
@@ -250,7 +272,7 @@
         <div style="display: flex;flex-direction: row; align-items: center; justify-content: space-between;">
           <p>Here's some of my creations. Hoping this will serve as a proof of my creativity and skills.</p>
           <!-- <button>See All Projects</button> -->
-          <button class="button-4" role="button"><a href="portfolio-details.html">SEE ALL PROJECTS</a></button>
+          <!-- <button class="button-4" role="button"><a href="portfolio-details.html">SEE ALL PROJECTS</a></button> -->
         </div>
       </div><!-- End Section Title -->
       
@@ -410,8 +432,8 @@
         </div>
       </div>
 
-
-
+      <br><br><br>
+      <button class="button-4" role="button"  style="display: block; width: fit-content; margin: 0 auto;"><a href="portfolio-details.html">SEE ALL PROJECTS</a></button>
     </section>
 
     <!-- Skills Section -->
@@ -419,11 +441,12 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
+        <h2>What can I do?</h2>
+        
         <div style="display: flex;flex-direction: row; align-items: center; justify-content: space-between;">
-          <p>These are some of the things I do. Let me know if any of them fit your needs.</p>
+          <em>These are some of the things I do. Let me know if any of them fit your needs.</em>
           <!-- <button>See All Projects</button> -->
-          <button class="button-4" role="button" onclick="document.location='pages/skills-details-dev.html'">See Skill Details</button>
+          <!-- <button class="button-4" role="button" onclick="document.location='pages/skills-details-dev.html'">See Skill Details</button> -->
         </div>
       </div><!-- End Section Title -->
 
@@ -548,15 +571,118 @@
         </div>
 
       </div>
+      <br><br>
+      <button class="button-4" role="button"  style="display: block; width: fit-content; margin: 0 auto;"onclick="document.location='pages/skills-details-dev.html'">SEE SKILL DETAILS</button>
       
     </section><!-- /Skills Section -->
 
-    
+    <!-- Interests Section -->
+    <section id="interests" class="interests section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Interests</h2>
+        <div><span>In my personal time, these things keep me sane</span> <span class="description-title"></span></div>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <i class="bi bi-eye" style="color: #ffbb2c;"></i>
+              <h3><a href="" class="stretched-link">Guitar & Music</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="features-item">
+              <i class="bi bi-infinity" style="color: #5578ff;"></i>
+              <h3><a href="" class="stretched-link">Online Games</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="features-item">
+              <i class="bi bi-mortarboard" style="color: #e80368;"></i>
+              <h3><a href="" class="stretched-link">Board Games</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="features-item">
+              <i class="bi bi-nut" style="color: #e361ff;"></i>
+              <h3><a href="" class="stretched-link">TV & Movies</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="features-item">
+              <i class="bi bi-shuffle" style="color: #47aeff;"></i>
+              <h3><a href="" class="stretched-link">Anime</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="features-item">
+              <i class="bi bi-star" style="color: #ffa76e;"></i>
+              <h3><a href="" class="stretched-link">Physical Sciences</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
+            <div class="features-item">
+              <i class="bi bi-x-diamond" style="color: #11dbcf;"></i>
+              <h3><a href="" class="stretched-link">Books</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
+            <div class="features-item">
+              <i class="bi bi-camera-video" style="color: #4233ff;"></i>
+              <h3><a href="" class="stretched-link">Philosophy</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
+            <div class="features-item">
+              <i class="bi bi-command" style="color: #b2904f;"></i>
+              <h3><a href="" class="stretched-link">Coding</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1000">
+            <div class="features-item">
+              <i class="bi bi-dribbble" style="color: #b20969;"></i>
+              <h3><a href="" class="stretched-link">Sight-see</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1100">
+            <div class="features-item">
+              <i class="bi bi-activity" style="color: #ff5828;"></i>
+              <h3><a href="" class="stretched-link">Organize</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1200">
+            <div class="features-item">
+              <i class="bi bi-brightness-high" style="color: #29cc61;"></i>
+              <h3><a href="" class="stretched-link">Writing</a></h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Interests Section -->
 
     
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
+    <section id="contact" class="contact section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">

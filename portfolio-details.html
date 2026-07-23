@@ -9,7 +9,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/test JP Logo.png" rel="icon">
+  <link href="assets/jp_logo_light.png" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -26,6 +26,34 @@
 
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
+
+  <style>
+    #hero { position: relative; overflow: hidden; }
+    #hero:before { pointer-events: none; z-index: 2; }
+    #hero .container { position: relative; z-index: 4; }
+    .hero-shapes { position: absolute; inset: 0; z-index: 3; pointer-events: auto; }
+    .hero-shapes span {
+      position: absolute;
+      width: 18vmin;
+      height: 18vmin;
+      border-radius: 28%;
+      opacity: .18;
+      filter: blur(1px);
+      cursor: pointer;
+      pointer-events: auto;
+      transition: top .45s ease, left .45s ease, opacity .25s ease;
+      animation: floatUp 12s ease-in-out infinite;
+    }
+    .hero-shapes span:nth-child(1) { left: 8%; top: 70%; background: #00d9a6; }
+    .hero-shapes span:nth-child(2) { left: 35%; top: 82%; background: #00b3ff; border-radius: 50%; }
+    .hero-shapes span:nth-child(3) { left: 62%; top: 74%; background: #ffd166; }
+    .hero-shapes span:nth-child(4) { left: 84%; top: 80%; background: #ff6b6b; border-radius: 50%; }
+    @keyframes floatUp {
+      0% { transform: translateY(10vh) rotate(0deg); }
+      50% { transform: translateY(-32vh) rotate(130deg); }
+      100% { transform: translateY(10vh) rotate(260deg); }
+    }
+  </style>
 
 </head>
 
@@ -61,6 +89,9 @@
     <section id="hero" class="hero section dark-background" style="min-height: 50vh; height: 50vh;">
 
       <!-- <img src="assets/img/cover.jpeg" alt="" data-aos="fade-in" class=""> -->
+      <div class="hero-shapes" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="50">
         <h2>JP's creations</h2>
@@ -68,7 +99,7 @@
         
       </div>
 
-    </section><!-- /Hero Section -->
+    </section>
 
     <!-- Page Title -->
     <!-- <div class="page-title dark-background">
@@ -111,7 +142,7 @@
                   <h4>MemPi</h4>
                   <p>Learn and memorize as many digits as possible <br>of the popular mathematical constant, Pi.</p>
                   <a href="https://jp-panonce.github.io/memPi/" target="_blank" title="Open Project" class="preview-link"><i class="bi bi-box-arrow-up-right"></i></a>
-                  <a href="mempi.html" title="More Details" class="details-link"><i class="bi bi-info-square-fill"></i></a>
+                  <a href="pages/mempi.html" title="More Details" class="details-link"><i class="bi bi-info-square-fill"></i></a>
                 </div>
               </div>
             </div>
@@ -170,7 +201,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="data_solutions" class="portfolio section light-background">
+    <section id="data_solutions" class="portfolio section ">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -372,6 +403,18 @@
   <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.hero-shapes span').forEach((s, i) => {
+      s.style.animationDelay = `${-i * 2}s`;
+      s.style.animationDuration = `${10 + Math.random() * 6}s`;
+      s.addEventListener('click', () => {
+        s.style.left = `${5 + Math.random() * 85}%`;
+        s.style.top = `${58 + Math.random() * 30}%`;
+        s.style.opacity = '.32';
+        setTimeout(() => s.style.opacity = '.18', 220);
+      });
+    });
+  </script>
 
   <!-- Main JS File -->
   <script src="../assets/js/main.js"></script>
