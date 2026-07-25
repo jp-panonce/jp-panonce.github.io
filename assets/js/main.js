@@ -10,6 +10,217 @@
   "use strict";
 
   /**
+   * Site theme (light/dark) toggle with persistence.
+   */
+  const themeKey = 'jp-theme-preference';
+
+  function readSavedTheme() {
+    try {
+      return localStorage.getItem(themeKey);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function saveTheme(theme) {
+    try {
+      localStorage.setItem(themeKey, theme);
+    } catch (error) {
+      // Ignore storage errors (private mode or disabled storage).
+    }
+  }
+
+  function getPreferredTheme() {
+    const savedTheme = readSavedTheme();
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      return savedTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
+  }
+
+  function updateThemeToggleButtons() {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+      const icon = button.querySelector('i');
+      if (icon) {
+        icon.classList.remove('bi-moon-stars', 'bi-sun');
+        icon.classList.add(isDark ? 'bi-sun' : 'bi-moon-stars');
+      }
+
+      button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+
+  function ensureThemeToggleButton() {
+    if (document.querySelector('[data-theme-toggle]')) {
+      return;
+    }
+
+    const header = document.querySelector('#header');
+    if (!header) {
+      return;
+    }
+
+    let socialLinks = header.querySelector('.social-links');
+    if (!socialLinks) {
+      socialLinks = document.createElement('div');
+      socialLinks.className = 'social-links text-center';
+      header.appendChild(socialLinks);
+    }
+
+    const button = document.createElement('a');
+    button.href = '#';
+    button.className = 'theme-toggle';
+    button.setAttribute('data-theme-toggle', '');
+    button.innerHTML = '<i class="bi bi-moon-stars"></i>';
+    socialLinks.prepend(button);
+  }
+
+  function initThemeToggle() {
+    setTheme(getPreferredTheme());
+    ensureThemeToggleButton();
+    updateThemeToggleButtons();
+
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const nextTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(nextTheme);
+        saveTheme(nextTheme);
+        updateThemeToggleButtons();
+      });
+    });
+  }
+
+  initThemeToggle();
+
+  /**
+   * Homepage hero snap scrolling.
+   */
+  function initHeroSnapScroll() {
+    if (!document.body.classList.contains('hero-snap-scroll')) {
+      return;
+    }
+
+    const heroSection = document.querySelector('main .hero');
+    if (!heroSection) {
+      return;
+    }
+
+    const nextSection = heroSection.nextElementSibling;
+    if (!nextSection) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let isAnimating = false;
+    let touchStartY = null;
+
+    function snapTo(targetTop) {
+      if (isAnimating) {
+        return;
+      }
+
+      isAnimating = true;
+      document.body.classList.add('hero-transitioning');
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+
+      window.setTimeout(() => {
+        isAnimating = false;
+        document.body.classList.remove('hero-transitioning');
+      }, prefersReducedMotion ? 80 : 850);
+    }
+
+    function getNextSectionTop() {
+      return nextSection.getBoundingClientRect().top + window.scrollY;
+    }
+
+    function exitHero() {
+      if (isAnimating) {
+        return;
+      }
+
+      const nextSectionTop = getNextSectionTop();
+      const isWithinHeroZone = window.scrollY < (nextSectionTop - 120);
+      if (!isWithinHeroZone) {
+        return;
+      }
+
+      snapTo(nextSectionTop);
+    }
+
+    function returnToHero() {
+      if (isAnimating || window.scrollY <= 30) {
+        return;
+      }
+
+      const nextSectionTop = getNextSectionTop();
+      const isWithinSnapBackZone = window.scrollY <= (nextSectionTop + 140);
+      if (!isWithinSnapBackZone) {
+        return;
+      }
+
+      snapTo(0);
+    }
+
+    window.addEventListener('wheel', (event) => {
+      if (event.deltaY > 8) {
+        exitHero();
+      } else if (event.deltaY < -8) {
+        returnToHero();
+      }
+    }, {
+      passive: true
+    });
+
+    window.addEventListener('touchstart', (event) => {
+      touchStartY = event.changedTouches?.[0]?.clientY ?? null;
+    }, {
+      passive: true
+    });
+
+    window.addEventListener('touchend', (event) => {
+      const touchEndY = event.changedTouches?.[0]?.clientY ?? null;
+      if (touchStartY !== null && touchEndY !== null && (touchStartY - touchEndY) > 16) {
+        exitHero();
+      } else if (touchStartY !== null && touchEndY !== null && (touchEndY - touchStartY) > 16) {
+        returnToHero();
+      }
+      touchStartY = null;
+    }, {
+      passive: true
+    });
+
+    window.addEventListener('keydown', (event) => {
+      const isTyping = event.target instanceof HTMLElement &&
+        (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' || event.target.isContentEditable);
+
+      if (isTyping) {
+        return;
+      }
+
+      if (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ') {
+        exitHero();
+      } else if (event.key === 'ArrowUp' || event.key === 'PageUp' || event.key === 'Home') {
+        returnToHero();
+      }
+    });
+  }
+
+  initHeroSnapScroll();
+
+  /**
    * Header toggle
    */
   const headerToggleBtn = document.querySelector('.header-toggle');

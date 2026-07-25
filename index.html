@@ -28,12 +28,11 @@
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
-<body class="desktop-nav topnav-page">
+<body class="desktop-nav topnav-page hero-snap-scroll">
 
-  <header id="header" class="header dark-background topnav-header" style="background: transparent !important; position: absolute; top: 0; left: 0; width: 100%; z-index: 1000;">
+  <header id="header" class="header dark-background topnav-header" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000;">
     <a href="index.html" class="logo d-flex align-items-end">
       <img src="assets/jp_logo_light.png" alt="JP. Panonce logo" style="scale: 120%;">
-      <!-- <h1 class="sitename" style="font-size:large;"> .me</h1> -->
     </a>
 
     <nav id="navmenu" class="navmenu">
@@ -41,16 +40,9 @@
         <li><a href="about-me.html"><i class="bi bi-person navicon"></i>About Me</a></li>
         <li><a href="blog-home.html"><i class="bi bi-file-earmark-text navicon"></i>Blog</a></li>
         <li><a href="portfolio-details.html"><i class="bi bi-images navicon"></i>Creations</a></li>
-        <li><a href="tools.html"><i class="bi bi-hdd-stack navicon"></i>Tools</a></li>
-        <!-- <li><a href="#contact"><i class="bi bi-envelope navicon"></i>Contact</a></li> -->
+        <li><a href="tools.html"><i class="bi bi-tools navicon"></i>Tools</a></li>
       </ul>
     </nav>
-
-    <div class="social-links text-center">
-      <a href="https://github.com/jp-panonce" target="_blank" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://www.instagram.com/jpasensi/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-    </div>
 
   </header>
 
@@ -126,6 +118,15 @@
         <!-- Stats Section -->
     <section id="stats" class="stats section dark-background">
 
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Site in numbers</h2>
+        <!-- <div><span>In my personal time, these things keep me sane</span> <span class="description-title"></span></div> -->
+        <em>
+          This is my personal website where I showcase whatever I want to let out and 'brag'. This serves as a platform for me to share my thoughts, experiences, and creations with the world. 
+        </em>
+      </div><!-- End Section Title -->
+
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
@@ -133,7 +134,7 @@
             <div class="stats-item">
               <i class="bi bi-journal-richtext"></i>
               <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Blog Posts</strong> <span> on my experiences, thoughts and more.</span><br>> <a href="blog-home.html">jp's eudaimonia</a></p>
+              <p><strong>Blog Posts</strong><br><em>read more in my </em><a href="blog-home.html"> eudaimonia</a></p>
             </div>
           </div>
 
@@ -141,7 +142,7 @@
             <div class="stats-item">
               <i class="bi bi-headset"></i>
               <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Creations </strong> of programming experience<span></span></p>
+              <p><strong>Creations</strong><br><em>take a look at my </em><a href="portfolio-details.html">work</a></p>
             </div>
           </div>
 
@@ -149,7 +150,7 @@
             <div class="stats-item">
               <i class="bi bi-headset"></i>
               <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="3" class="purecounter"></span>
-              <p><strong>Apps & Tools</strong> you can use or just for fun<span></span></p>
+              <p><strong>Apps & Tools</strong><br><em>try them out </em><a href="tools.html">here</a></p>
             </div>
           </div>
 
@@ -161,71 +162,106 @@
 
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section dark-background">
+    <section id="contact" class="site-cloud-footer section">
 
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>If you’re interested or have any questions, feel free to reach out to me via my social media profiles or contact details.</p>
-      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="80">
+        <div class="site-cloud-footer-grid">
+          <div class="footer-contact-panel" data-aos="fade-right" data-aos-delay="120">
+            <h2>Contact Me</h2>
+            <p>
+              If you have questions, ideas, or collaboration plans, feel free to reach out.
+            </p>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <ul class="footer-contact-list">
+              <li>
+                <i class="bi bi-geo-alt"></i>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Cebu+City,+6000+Cebu/@12.4487661,125.4376331,3.98z/data=!4m6!3m5!1s0x33a99f6c8585830f:0xe0a7d4c233b8657c!8m2!3d10.3978208!4d123.8634544!16s%2Fg%2F11v5vzbvjm?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Cebu City, Cebu, Philippines</a>
+              </li>
+              <li>
+                <i class="bi bi-telephone"></i>
+                <a href="tel:+639453404489">+63 945 340 4489</a>
+              </li>
+              <li>
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:jpasensi13@gmail.com">jpasensi13@gmail.com</a>
+              </li>
+            </ul>
 
-        <div class="row gy-4">
-
-          <div class="col-lg-5">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <a target="_blank" href="https://www.google.com/maps/place/Cebu+City,+6000+Cebu/@12.4487661,125.4376331,3.98z/data=!4m6!3m5!1s0x33a99f6c8585830f:0xe0a7d4c233b8657c!8m2!3d10.3978208!4d123.8634544!16s%2Fg%2F11v5vzbvjm?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Cebu City, Cebu, Philippines</a>
-                </div>
-              </div>
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Me</h3>
-                  <p>+63 945 340 4489</p>
-                </div>
-              </div>
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Me</h3>
-
-                  <a href="mailto:jpasensi13@gmail.com">jpasensi13@gmail.com</a>
-                </div>
-              </div>
-
-            </div>
+            <a class="footer-email-btn" href="mailto:jpasensi13@gmail.com?subject=Hello%20JP">
+              <i class="bi bi-send"></i>
+              Send me an email
+            </a>
           </div>
           
-          <div class="col-lg-7">
-            <p>You can also find me here</p>
-            <div style="display: flex; flex-wrap: wrap;gap: 20px; align-items: center; ">
-              <a href="https://github.com/jp-panonce" target="_blank"><img alt="GitHub" style="width:100px" src="assets/img/github.png"></a>
-              <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank"><img alt="LinkedIn" style="width:80px" src="assets/img/linked_in.png"></a>
-              <a href="https://public.tableau.com/app/profile/john.paul.panonce" target="_blank"><img alt="Tableau Public" style="width:130px" src="assets/img/tableau_public.png"></a>
-              <a href="https://www.ultimate-guitar.com/u/jpasensi" target="_blank"><img alt="Ultimate-Guitar" style="width:25px" src="assets/img/ultimate-guitar.png"></a>
-              <a href="https://www.khanacademy.org/profile/kaid_817055080752672436718813/projects" target="_blank"><img alt="Khan Academy" style="width:130px" src="assets/img/khan_academy.png"></a>
-              <a href="https://share.streamlit.io/user/jp-panonce" target="_blank"><img alt="Streamlit" style="width:130px" src="assets/img/streamlit.png"></a>
-              <a href="https://www.freecodecamp.org/JohnPaulPanonce" target="_blank"><img alt="Streamlit" style="width:110px" src="assets/img/freecodecamp.png"></a>
-              <a href="https://leetcode.com/u/jp-panonce/" target="_blank"><img alt="LeetCode" style="width:100px" src="assets/img/leet_code_logo.svg"></a>
 
+          <div class="footer-browse-panel" data-aos="fade-left" data-aos-delay="180">
+            <div class="footer-browse-layout">
+              <div class="browse-links">
+                <h4 class="footer-subsection-title">EXPLORE THE SITE</h4>
+                <ul>
+                  <li><a href="blog-home.html">Blog</a></li>
+                  <li><a href="portfolio-details.html">Creations</a></li>
+                  <li><a href="tools.html">Tools</a></li>
+                  <li><a href="about-me.html">About Me</a></li>
+                </ul>
+              </div>
+
+              <div class="browse-links">
+                <h4 class="footer-subsection-title">GENERAL</h4>
+                <ul>
+                  <li><a href="about-me.html">About Me</a></li>
+                  <li><a href="#">About the site</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+
+              <div class="find-me-links">
+                <h6 class="footer-subsection-title">You can also find me here:</h6>
+                <div class="site-social-strip" data-aos="fade-up" data-aos-delay="260">
+                  <a href="https://github.com/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://public.tableau.com/app/profile/john.paul.panonce" target="_blank" rel="noopener noreferrer" aria-label="Tableau Public">
+                    <img src="assets/img/tableau-icon-svg.svg" alt="Tableau" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+                  </a>
+                  <a href="https://www.ultimate-guitar.com/u/jpasensi" target="_blank" rel="noopener noreferrer" aria-label="Ultimate Guitar">
+                    <img src="assets/img/Ultimate_Guitar_Icon.svg.webp" alt="Ultimate Guitar" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+                  </a>
+                  <a href="https://www.khanacademy.org/profile/kaid_817055080752672436718813/projects" target="_blank" rel="noopener noreferrer" aria-label="Khan Academy">
+                    <img src="assets/img/khan-academy.svg" alt="Khan Academy" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+                  </a>
+                  <a href="https://share.streamlit.io/user/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="Streamlit">
+                    <img src="assets/img/streamlit-icon.webp" alt="Streamlit" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+                  </a>
+                  <a href="https://www.freecodecamp.org/JohnPaulPanonce" target="_blank" rel="noopener noreferrer" aria-label="freeCodeCamp">
+                    <img src="assets/img/freecodecamp-icon.svg" alt="freecodecamp.org" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+                  </a>
+                  <a href="https://leetcode.com/u/jp-panonce/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                    <img src="assets/img/leetcode-icon.svg" alt="Leet Code" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
 
-      </div> 
-      <br><br><br><br><br><br>
+        <div class="site-footer-meta" data-aos="fade-up" data-aos-delay="220">
+          <p>© 2018-present John Paul Panonce. All Rights Reserved.</p>
+          <div class="site-policy-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Code of Conduct</a>
+          </div>
+        </div>
+      </div>
 
     </section>
 
+
+    
   </main>
 
 

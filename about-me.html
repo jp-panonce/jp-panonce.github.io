@@ -23,6 +23,7 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -38,20 +39,18 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="index.html"><i class="bi bi-house navicon"></i></a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i>Who am I?</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i>Experience</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i>Projects</a></li>
-        <li><a href="#skills"><i class="bi bi-hdd-stack navicon"></i>Skills</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i>Contact</a></li>
+        <li><a href="about-me.html"><i class="bi bi-person navicon"></i>About Me</a></li>
+        <li><a href="blog-home.html"><i class="bi bi-file-earmark-text navicon"></i>Blog</a></li>
+        <li><a href="portfolio-details.html"><i class="bi bi-images navicon"></i>Creations</a></li>
+        <li><a href="tools.html"><i class="bi bi-tools navicon"></i>Tools</a></li>
       </ul>
     </nav>
 
-    <div class="social-links text-center">
+    <!-- <div class="social-links text-center">
       <a href="https://github.com/jp-panonce" target="_blank" class="github"><i class="bi bi-github"></i></a>
       <a href="https://www.instagram.com/jpasensi/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
       <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-    </div>
+    </div> -->
 
   </header>
 
@@ -81,29 +80,48 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="about-mosaic">
-          <article class="mosaic-card card-intro span-7 span-rows-2">
-            <p class="kicker">Hello, I am JP</p>
-            <h3>Builder of ideas into practical, usable tools.</h3>
-            <p>
-              I started coding in high school and kept going because solving real problems never gets old. I like shipping things that are simple for people to use but robust behind the scenes.
-            </p>
-            <p>
-              Outside coding, I recharge with music, fitness, and long-form reading.
-            </p>
+          <article class="mosaic-card card-intro span-7 span-rows-1">
+            <div style="display: flex; align-items: flex-start; gap: 16px; flex-wrap: nowrap; justify-content: space-between;">
+              <div style="flex: 1 1 auto; min-width: 0;">
+                <p class="kicker">HI, I'M</p>
+                <h3 style="margin: 0 0 4px 0;"><b>JOHN PAUL PANONCE</b></h3>
+                <h4 style="margin: 0 0 8px 0; line-height: 1;">
+                  <button type="button" id="namePronunciationTrigger" aria-label="Play pronunciation of John Paul Panonce" title="Play pronunciation" style="all: unset; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; line-height: 1;">
+                    <span class="kicker" style="display: inline-block; margin: 0; line-height: 1;">dʒon pɔl paˈnɔnsɛ</span>
+                    <i class="bi bi-volume-up-fill" aria-hidden="true" style="font-size: 0.65em; line-height: 1; display: block; transform: translateY(-1px);"></i>
+                  </button>
+                </h4>
+                <audio id="namePronunciationAudio" src="assets/audio/full-name-ipa-pronunciation.mp3" preload="metadata"></audio>
+                <p style="margin: 0;">
+                  <br>
+                  <b>Your personal <code>coding</code> companion</b> :)
+                  <br><br>
+                  <!-- My superpower is <b><code>[materialize]</code></b> - a materializer of all your ideas, and turning them into something that makes your life easier -->
+                  <!-- <br><br> -->
+                  I started coding in high school and never stopped. Solving problems with code never gets boring. I love learning new stuff and exploring new tools and methods that makes life more bearable.
+                  <br><br>
+                </p>
+              </div>
+              <img src="assets/img/me.png" class="img-fluid" alt="Portrait of John Paul Panonce" style="flex: 0 0 220px; margin-left: auto; max-width: 250px; width: auto; height: auto;">
+            </div>
           </article>
 
-          <article class="mosaic-card card-photo span-5 span-rows-2">
-            <img src="assets/img/me.png" class="img-fluid" alt="Portrait of John Paul Panonce">
-            <p class="caption">I'm from Cebu, Philippines, roughly <b><em>14,800</em></b> km away from your current location, according to your IP address.</p>
+          <!-- <article class="mosaic-card card-links span-3 span-rows-5">
+            <p>sdf</p>
+          </article> -->
+
+          
+
+          <article class="mosaic-card card-fact span-5 span-rows-1">
+            <div id="cebuLocationMap" class="location-map" role="img" aria-label="Map showing Cebu City and the viewer location"></div>
+            <p style="font-size: small;"> <span id="viewerDistanceInfo" style="display: none;">You are roughly <b><em id="viewerDistanceKm">...</em></b> km away from your current location (<span id="viewerLocation">detecting...</span>), according to your IP address (<code id="viewerIp">...</code>)</span>.</p>
+            <br>
+            <p class="caption">I'm from 📌<a href="https://en.wikipedia.org/wiki/Cebu_City" target="_blank">Cebu, Philippines</a> - known for savory food and beautiful beaches and the <a href="https://en.wikipedia.org/wiki/Sinulog" target="_blank"><code>Sinulog Festival</code></a>.</p>
           </article>
 
-          <article class="mosaic-card card-fact span-4">
-            <h4>Current focus</h4>
-            <p>Automation, data engineering, and full-stack tools with measurable impact.</p>
-          </article>
-
-          <article class="mosaic-card card-svg span-4">
+          <!-- <article class="mosaic-card card-svg span-4">
             <h4>Interactive SVG sample</h4>
+            
             <svg class="sample-orbit" viewBox="0 0 180 120" role="img" aria-label="Animated orbit illustration">
               <defs>
                 <linearGradient id="orbitStroke" x1="0" y1="0" x2="1" y2="1">
@@ -118,16 +136,25 @@
               </g>
             </svg>
             <p class="caption">Hover this card to animate the orbit.</p>
+          </article> -->
+
+          <article class="mosaic-card card-links span-4">
+            <h4>Outside Coding...</h4>
+            <br>
+            <p>I love watching 🍿movies, 🍙anime, and 💻TV shows. I play the 🎸guitar and 📚read a lot.</p>
+            <br>
+            <p>My favorites are the classics, science fiction & any science/philosophy books. I also love to travel and explore new places, but I am a homebody at heart.</p>
+            <p>Read more in my blog <a href="blog-home.html#hobbies" target="_blank">here</a>.</p>
           </article>
 
           <article class="mosaic-card card-links span-4">
-            <h4>Read more</h4>
-            <p>Browse my <a href="blog-home.html" target="_blank">blog</a> for thoughts and learnings, or continue to the projects section below.</p>
+            <h4>Experience</h4>
+            <p>I've handled everything from electronics, embedded software to pure software</p>
           </article>
         </div>
       </div>
 
-    </section><!-- /About Section -->
+    </section>
         
 
     <!-- Resume Section -->
@@ -234,7 +261,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section id="stats" class="stats section">
+    <!-- <section id="stats" class="stats section"> -->
 <!-- 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -280,11 +307,11 @@
       <div class="container">
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
           
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+          <!-- <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-app">Apps</li>
             <li data-filter=".filter-data">Data Products</li>
-            <li data-filter=".filter-digital-products">Digital Products</li>
+            <li data-filter=".filter-digital-products">Digital Products</li> -->
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="50">
@@ -681,71 +708,93 @@
 
     
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section dark-background">
+    <section id="contact" class="site-cloud-footer section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>If you’re interested or have any questions, feel free to reach out to me via my social media profiles or contact details.</p>
-      </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="80">
+        <div class="site-cloud-footer-grid">
+          <div class="footer-contact-panel" data-aos="fade-right" data-aos-delay="120">
+            <h2>Contact Me</h2>
+            <p>
+              If you have questions, ideas, or collaboration plans, feel free to reach out.
+            </p>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <ul class="footer-contact-list">
+              <li>
+                <i class="bi bi-geo-alt"></i>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Cebu+City,+6000+Cebu/@12.4487661,125.4376331,3.98z/data=!4m6!3m5!1s0x33a99f6c8585830f:0xe0a7d4c233b8657c!8m2!3d10.3978208!4d123.8634544!16s%2Fg%2F11v5vzbvjm?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Cebu City, Cebu, Philippines</a>
+              </li>
+              <li>
+                <i class="bi bi-telephone"></i>
+                <a href="tel:+639453404489">+63 945 340 4489</a>
+              </li>
+              <li>
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:jpasensi13@gmail.com">jpasensi13@gmail.com</a>
+              </li>
+            </ul>
 
-        <div class="row gy-4">
-
-          <div class="col-lg-5">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <a target="_blank" href="https://www.google.com/maps/place/Cebu+City,+6000+Cebu/@12.4487661,125.4376331,3.98z/data=!4m6!3m5!1s0x33a99f6c8585830f:0xe0a7d4c233b8657c!8m2!3d10.3978208!4d123.8634544!16s%2Fg%2F11v5vzbvjm?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Cebu City, Cebu, Philippines</a>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Me</h3>
-                  <p>+63 945 340 4489</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Me</h3>
-                  <!-- <p>jpasensi13@gmail.com</p> -->
-                  <a href="mailto:jpasensi13@gmail.com">jpasensi13@gmail.com</a>
-                </div>
-              </div><!-- End Info Item -->
-
-            </div>
-          </div>
-          
-          <div class="col-lg-7">
-            <p>You can also find me here</p>
-            <div style="display: flex; flex-wrap: wrap;gap: 20px; align-items: center; ">
-              <a href="https://github.com/jp-panonce" target="_blank"><img alt="GitHub" style="width:100px" src="assets/img/github.png"></a>
-              <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank"><img alt="LinkedIn" style="width:80px" src="assets/img/linked_in.png"></a>
-              <a href="https://public.tableau.com/app/profile/john.paul.panonce" target="_blank"><img alt="Tableau Public" style="width:130px" src="assets/img/tableau_public.png"></a>
-              <a href="https://www.ultimate-guitar.com/u/jpasensi" target="_blank"><img alt="Ultimate-Guitar" style="width:25px" src="assets/img/ultimate-guitar.png"></a>
-              <a href="https://www.khanacademy.org/profile/kaid_817055080752672436718813/projects" target="_blank"><img alt="Khan Academy" style="width:130px" src="assets/img/khan_academy.png"></a>
-              <a href="https://share.streamlit.io/user/jp-panonce" target="_blank"><img alt="Streamlit" style="width:130px" src="assets/img/streamlit.png"></a>
-              <a href="https://www.freecodecamp.org/JohnPaulPanonce" target="_blank"><img alt="Streamlit" style="width:110px" src="assets/img/freecodecamp.png"></a>
-              <a href="https://leetcode.com/u/jp-panonce/" target="_blank"><img alt="LeetCode" style="width:100px" src="assets/img/leet_code_logo.svg"></a>
-
-            </div>
+            <a class="footer-email-btn" href="mailto:jpasensi13@gmail.com?subject=Hello%20JP">
+              <i class="bi bi-send"></i>
+              Send me an email
+            </a>
           </div>
 
+          <div class="footer-browse-panel" data-aos="fade-left" data-aos-delay="180">
+            <div class="footer-browse-layout">
+              <div class="browse-links">
+                <h4 class="footer-subsection-title">EXPLORE THE SITE</h4>
+                <ul>
+                  <li><a href="blog-home.html">Blog</a></li>
+                  <li><a href="portfolio-details.html">Creations</a></li>
+                  <li><a href="tools.html">Tools</a></li>
+                  <li><a href="about-me.html">About Me</a></li>
+                </ul>
+              </div>
+
+              <div class="find-me-links">
+                <h4>FIND ME HERE</h4>
+                <div class="site-social-strip" data-aos="fade-up" data-aos-delay="260">
+                  <a href="https://github.com/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://public.tableau.com/app/profile/john.paul.panonce" target="_blank" rel="noopener noreferrer" aria-label="Tableau Public">
+                    <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.ultimate-guitar.com/u/jpasensi" target="_blank" rel="noopener noreferrer" aria-label="Ultimate Guitar">
+                    <i class="bi bi-music-note-beamed" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.khanacademy.org/profile/kaid_817055080752672436718813/projects" target="_blank" rel="noopener noreferrer" aria-label="Khan Academy">
+                    <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://share.streamlit.io/user/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="Streamlit">
+                    <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.freecodecamp.org/JohnPaulPanonce" target="_blank" rel="noopener noreferrer" aria-label="freeCodeCamp">
+                    <i class="bi bi-code-slash" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://leetcode.com/u/jp-panonce/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                    <i class="bi bi-terminal" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <div class="site-footer-meta" data-aos="fade-up" data-aos-delay="220">
+          <p>© 2018-present John Paul Panonce. All Rights Reserved.</p>
+          <div class="site-policy-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Code of Conduct</a>
+          </div>
+        </div>
       </div>
-      <br><br><br><br><br><br>
 
-    </section><!-- /Contact Section -->
+    </section>
 
   </main>
 
@@ -767,6 +816,161 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <script>
+    (function () {
+      var trigger = document.getElementById("namePronunciationTrigger");
+      var audio = document.getElementById("namePronunciationAudio");
+
+      if (!trigger || !audio) {
+        return;
+      }
+
+      trigger.addEventListener("click", function () {
+        audio.currentTime = 0;
+        var playPromise = audio.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(function () {
+            // Ignore autoplay policy errors; user can click again.
+          });
+        }
+      });
+    })();
+
+    (async function () {
+      var distanceEl = document.getElementById("viewerDistanceKm");
+      var locationEl = document.getElementById("viewerLocation");
+      var ipEl = document.getElementById("viewerIp");
+      var distanceInfoEl = document.getElementById("viewerDistanceInfo");
+      var mapEl = document.getElementById("cebuLocationMap");
+
+      if (!distanceEl || !locationEl || !ipEl || !distanceInfoEl || !mapEl || typeof L === "undefined") {
+        return;
+      }
+
+      var cebuLat = 10.3157;
+      var cebuLon = 123.8854;
+      var map = L.map(mapEl, {
+        scrollWheelZoom: false,
+        zoomControl: true,
+        attributionControl: true
+      }).setView([cebuLat, cebuLon], 6);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      var cebuMarker = L.marker([cebuLat, cebuLon]).addTo(map).bindPopup("Cebu City, Philippines");
+      var userMarker = null;
+      var routeLine = null;
+
+      function drawRoute(userLat, userLon, label) {
+        if (userMarker) {
+          map.removeLayer(userMarker);
+        }
+
+        if (routeLine) {
+          map.removeLayer(routeLine);
+        }
+
+        userMarker = L.marker([userLat, userLon]).addTo(map).bindPopup(label || "Your location");
+        routeLine = L.polyline([[cebuLat, cebuLon], [userLat, userLon]], {
+          color: "#ac164d",
+          weight: 3,
+          opacity: 0.9,
+          dashArray: "6 6"
+        }).addTo(map);
+
+        var bounds = L.latLngBounds([[cebuLat, cebuLon], [userLat, userLon]]);
+        map.fitBounds(bounds.pad(0.25));
+      }
+
+      function toRad(deg) {
+        return (deg * Math.PI) / 180;
+      }
+
+      function haversineKm(lat1, lon1, lat2, lon2) {
+        var earthKm = 6371;
+        var dLat = toRad(lat2 - lat1);
+        var dLon = toRad(lon2 - lon1);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return earthKm * c;
+      }
+
+      async function updateFromLocation(lat, lon, label, ipText) {
+        if (!Number.isNaN(lat) && !Number.isNaN(lon)) {
+          var km = Math.round(haversineKm(cebuLat, cebuLon, lat, lon)).toLocaleString();
+          distanceEl.textContent = km;
+          distanceInfoEl.style.display = "inline";
+          locationEl.textContent = label || "location unavailable";
+          if (ipText) {
+            ipEl.textContent = ipText;
+          }
+          drawRoute(lat, lon, label || "Your location");
+          return true;
+        }
+
+        return false;
+      }
+
+      function lookupByIp() {
+        return fetch("https://ipapi.co/json/", { cache: "no-store" })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("IP lookup failed");
+            }
+
+            return response.json();
+          })
+          .then(function (data) {
+            var ip = data.ip || "unavailable";
+            var city = data.city || "";
+            var region = data.region || "";
+            var country = data.country_name || "";
+            var lat = Number(data.latitude);
+            var lon = Number(data.longitude);
+            var label = [city, region, country].filter(Boolean).join(", ") || "location unavailable";
+
+            ipEl.textContent = ip;
+            return updateFromLocation(lat, lon, label, ip);
+          });
+      }
+
+      function lookupByBrowser() {
+        return new Promise(function (resolve) {
+          if (!navigator.geolocation) {
+            resolve(false);
+            return;
+          }
+
+          navigator.geolocation.getCurrentPosition(function (position) {
+            var lat = Number(position.coords.latitude);
+            var lon = Number(position.coords.longitude);
+            resolve(updateFromLocation(lat, lon, "Your current location", "browser geolocation"));
+          }, function () {
+            resolve(false);
+          }, { enableHighAccuracy: true, timeout: 8000, maximumAge: 600000 });
+        });
+      }
+
+      try {
+        var resolved = await lookupByBrowser();
+        if (!resolved) {
+          await lookupByIp();
+        }
+      } catch (err) {
+        ipEl.textContent = "unavailable";
+        locationEl.textContent = "location unavailable";
+        distanceEl.textContent = "unknown";
+        distanceInfoEl.style.display = "none";
+      }
+    })();
+  </script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

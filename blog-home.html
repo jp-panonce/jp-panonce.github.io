@@ -42,19 +42,12 @@
     
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="index.html"><i class="bi bi-house navicon"></i></a></li>
-        <li><a href="#projects"><i class="bi bi-journal-text navicon"></i>Projects</a></li>
-        <li><a href="#hobbies"><i class="bi bi-broadcast navicon"></i>Hobbies</a></li>
-        <li><a href="#knowledge"><i class="bi bi-broadcast navicon"></i>Knowledge</a></li>
-        <li><a href="#experiences"><i class="bi bi-star navicon"></i>Experiences</a></li>
+        <li><a href="about-me.html"><i class="bi bi-person navicon"></i>About Me</a></li>
+        <li><a href="blog-home.html"><i class="bi bi-file-earmark-text navicon"></i>Blog</a></li>
+        <li><a href="portfolio-details.html"><i class="bi bi-images navicon"></i>Creations</a></li>
+        <li><a href="tools.html"><i class="bi bi-tools navicon"></i>Tools</a></li>
       </ul>
     </nav>
-
-    <div class="social-links text-center">
-      <a href="https://github.com/jp-panonce" target="_blank" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://www.instagram.com/jpasensi/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-    </div>
 
 
   </header>
@@ -67,7 +60,7 @@
       <!-- <img src="assets/img/cover.jpeg" alt="" data-aos="fade-in" class=""> -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="50">
-        <h2>JP's eudaimonia</h2>
+        <h2>my eudaimonia</h2>
         <p>read my <span class="typed" data-typed-items="travels, thoughts, experiences, learnings, creations, philosophy, book reviews, way of doing stuff, explainers"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true" style="animation-duration: 6s;"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true" style="animation-duration: 6s;"></span></p>
         
       </div>
@@ -76,43 +69,90 @@
 
 
     <!-- Projects Section -->
-    <section id="projects" class="about section ">
-      
+    <section id="projects" class="portfolio section light-background">
+
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-      <h2>PROJECTS</h2>
-      <em>I want to spread creativity. How do I do that? Share how I did it. I love it when ideas get exchanged and snowball</em>
-        
+        <h2>Creations Blog</h2>
       </div><!-- End Section Title -->
       
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        
-        <div class="row gy-2 justify-content-center">
-          <div class="col-lg-8">
-            <h3><b>Recent Posts</b></h3>
-            <br>
-            <h4><b>Philippines - A Climatological Overview</b></h4>
-            <h6><em>Exploring the Filipino climate & creating a dashboard from it</em></h6>
-            <p>The Philippines has a diverse climate, ranging from tropical to subtropical. Understanding the climate patterns is crucial for agriculture ... <br><a href="#">Read More</a></p>
-            <br>
-          </div>
-          <div class="col-lg-4 content">
-            <section id="recent-updates">
-            <h4>Popular Content</h4>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            </section>
-            
-          </div>
-        </div>
 
+      <div class="container">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app-web">Web App</li>
+            <li data-filter=".filter-app-game">Game</li>
+            <li data-filter=".filter-app-mobile">Mobile</li>
+          </ul><!-- End Portfolio Filters -->
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="50">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app-web filter-app-game">
+              <div class="portfolio-content h-100">
+                <img src="../assets/img/portfolio/memPi_cover.png" class="img-fluid" alt="" >
+                <div class="portfolio-info">
+                  <h4>MemPi</h4>
+                  <p>Learn and memorize as many digits as possible <br>of the popular mathematical constant, Pi.</p>
+                  <a href="https://jp-panonce.github.io/memPi/" target="_blank" title="Open Project" class="preview-link"><i class="bi bi-box-arrow-up-right"></i></a>
+                  <a href="pages/mempi.html" title="More Details" class="details-link"><i class="bi bi-info-square-fill"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app-web filter-app-game">
+              <div class="portfolio-content h-100">
+                <img src="../assets/img/portfolio/guess_rgb_cover.png" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Guess the RGB Color</h4>
+                  <p>A game which tests your ability to identify the RGB of a color</p>
+                  <a href="https://jp-panonce.github.io/OnePageHTMLs/guessTheRGB.html" target="_blank" title="Open Project" class="preview-link"><i class="bi bi-box-arrow-up-right"></i></a>
+                  <a href="guess_the_rgb.html" title="More Details" class="details-link"><i class="bi bi-info-square-fill"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app-web">
+              <div class="portfolio-content h-100">
+                <img src="../assets/img/portfolio/ece_board_cover.png" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>ECE Board Exam Review Assistant</h4>
+                  <p>A web app to help you pass the ECE Board Exam.</p>
+                  <a href="https://ece-boards-ph-practiceapp.streamlit.app/" target="_blank" title="Open Project" class="preview-link"><i class="bi bi-box-arrow-up-right"></i></a>
+                  <a href="ece_board_exam_assistant.html" title="More Details" class="details-link"><i class="bi bi-info-square-fill"></i></a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app-web">
+              <div class="portfolio-content h-100">
+                <img src="../assets/img/portfolio/periodic_table_cover.png" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>An Interactive Periodic Table</h4>
+                  <p>A web app to learn about all the chemical elements.</p>
+                  <a href="https://jp-panonce.github.io/periodic_table_js" target="_blank" title="Open Project" class="preview-link"><i class="bi bi-box-arrow-up-right"></i></a>
+                  <a href="interactive_periodic_table.html" title="More Details" class="details-link"><i class="bi bi-info-square-fill"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app-web">
+              <div class="portfolio-content h-100">
+                <img src="../assets/img/portfolio/trigofunctions_cover.png" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Trigonometric Functions Visualized</h4>
+                  <p>An educational web-app aiming to help you grasp the concepts of trigonometric functions</p>
+                  <a href="https://www.khanacademy.org/computer-programming/trigo-functions-made-easier/5863476127" target="_blank" title="Open in Khan Academy" class="preview-link"><i class="bi bi-box-arrow-up-right"></i></a>
+                  <a href="trigo_functions_visualized.html" title="More Details" class="details-link"><i class="bi bi-info-square-fill"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
       </div>
-
-    </section><!-- /About Section -->
+    </section>
         
     <!-- Hobbies Section -->
     <section id="hobbies" class="portfolio section light-background">
@@ -232,75 +272,154 @@
 
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section dark-background">
+    <section id="thoughts" class="section thoughts-section light-background">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h4>Contact Me</h4>
-        <p>If you’re interested or have any questions, feel free to reach out to me via my social media profiles or contact details.</p>
-      </div><!-- End Section Title -->
+        <h2>THOUGHTS</h2>
+      </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="container" data-aos="fade-up" data-aos-delay="80">
+        <div class="thoughts-timeline">
 
-        <div class="row gy-4">
+          <div class="timeline-year-group">
+            <div class="timeline-year"><span>2026</span></div>
+            <div class="timeline-posts">
+              <a href="#" class="timeline-post-link">AI is scary..</a>
+              <a href="#" class="timeline-post-link">i'm so behind...</a>
+            </div>
+          </div>
 
-          <div class="col-lg-5">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <a target="_blank" href="https://www.google.com/maps/place/Cebu+City,+6000+Cebu/@12.4487661,125.4376331,3.98z/data=!4m6!3m5!1s0x33a99f6c8585830f:0xe0a7d4c233b8657c!8m2!3d10.3978208!4d123.8634544!16s%2Fg%2F11v5vzbvjm?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Cebu City, Cebu, Philippines</a>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Me</h3>
-                  <p>+63 945 340 4489</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Me</h3>
-                  <!-- <p>jpasensi13@gmail.com</p> -->
-                  <a href="mailto:jpasensi13@gmail.com">jpasensi13@gmail.com</a>
-                </div>
-              </div><!-- End Info Item -->
-
+          <div class="timeline-year-group">
+            <div class="timeline-year"><span>2025</span></div>
+            <div class="timeline-posts">
+              <a href="#" class="timeline-post-link">Blog Questions Challenge 2025</a>
             </div>
           </div>
           
-          <div class="col-lg-7">
-            <p>You can also find me here</p>
-            <div style="display: flex; flex-wrap: wrap;gap: 20px; align-items: center; ">
-              <a href="https://github.com/jp-panonce" target="_blank"><img alt="GitHub" style="width:100px" src="assets/img/github.png"></a>
-              <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank"><img alt="LinkedIn" style="width:80px" src="assets/img/linked_in.png"></a>
-              <a href="https://public.tableau.com/app/profile/john.paul.panonce" target="_blank"><img alt="Tableau Public" style="width:130px" src="assets/img/tableau_public.png"></a>
-              <a href="https://www.ultimate-guitar.com/u/jpasensi" target="_blank"><img alt="Ultimate-Guitar" style="width:25px" src="assets/img/ultimate-guitar.png"></a>
-              <a href="https://www.khanacademy.org/profile/kaid_817055080752672436718813/projects" target="_blank"><img alt="Khan Academy" style="width:130px" src="assets/img/khan_academy.png"></a>
-              <a href="https://share.streamlit.io/user/jp-panonce" target="_blank"><img alt="Streamlit" style="width:130px" src="assets/img/streamlit.png"></a>
-              <a href="https://www.freecodecamp.org/JohnPaulPanonce" target="_blank"><img alt="Streamlit" style="width:110px" src="assets/img/freecodecamp.png"></a>
-              <a href="https://leetcode.com/u/jp-panonce/" target="_blank"><img alt="LeetCode" style="width:100px" src="assets/img/leet_code_logo.svg"></a>
 
+          <div class="timeline-year-group">
+            <div class="timeline-year"><span>2024</span></div>
+            <div class="timeline-posts">
+              <a href="#" class="timeline-post-link">the cutest queen 💕</a>
+            </div>
+          </div>
+          
+          <div class="timeline-year-group">
+            <div class="timeline-year"><span>2022</span></div>
+            <div class="timeline-posts">
+              <a href="#" class="timeline-post-link">on my own..</a>
             </div>
           </div>
 
+          <div class="timeline-year-group">
+            <div class="timeline-year"><span>2020</span></div>
+            <div class="timeline-posts">
+              <a href="#" class="timeline-post-link">Stuck at home..</a>
+              <a href="#" class="timeline-post-link">my first corporate job aaaaaand... covid happened</a>
+            </div>
+          </div>
+
+          <div class="timeline-year-group">
+            <div class="timeline-year"><span>2014</span></div>
+            <div class="timeline-posts">
+              <a href="#" class="timeline-post-link">this time, i'll do better</a>
+            </div>
+          </div>
+
+          <br>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="site-cloud-footer section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="80">
+        <div class="site-cloud-footer-grid">
+          <div class="footer-contact-panel" data-aos="fade-right" data-aos-delay="120">
+            <h2>Contact Me</h2>
+            <p>
+              If you have questions, ideas, or collaboration plans, feel free to reach out.
+            </p>
+
+            <ul class="footer-contact-list">
+              <li>
+                <i class="bi bi-geo-alt"></i>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Cebu+City,+6000+Cebu/@12.4487661,125.4376331,3.98z/data=!4m6!3m5!1s0x33a99f6c8585830f:0xe0a7d4c233b8657c!8m2!3d10.3978208!4d123.8634544!16s%2Fg%2F11v5vzbvjm?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Cebu City, Cebu, Philippines</a>
+              </li>
+              <li>
+                <i class="bi bi-telephone"></i>
+                <a href="tel:+639453404489">+63 945 340 4489</a>
+              </li>
+              <li>
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:jpasensi13@gmail.com">jpasensi13@gmail.com</a>
+              </li>
+            </ul>
+
+            <a class="footer-email-btn" href="mailto:jpasensi13@gmail.com?subject=Hello%20JP">
+              <i class="bi bi-send"></i>
+              Send me an email
+            </a>
+          </div>
+
+          <div class="footer-browse-panel" data-aos="fade-left" data-aos-delay="180">
+            <div class="footer-browse-layout">
+              <div class="browse-links">
+                <h4 class="footer-subsection-title">EXPLORE THE SITE</h4>
+                <ul>
+                  <li><a href="blog-home.html">Blog</a></li>
+                  <li><a href="portfolio-details.html">Creations</a></li>
+                  <li><a href="tools.html">Tools</a></li>
+                  <li><a href="about-me.html">About Me</a></li>
+                </ul>
+              </div>
+
+              <div class="find-me-links">
+                <h4>FIND ME HERE</h4>
+                <div class="site-social-strip" data-aos="fade-up" data-aos-delay="260">
+                  <a href="https://github.com/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/john-paul-panonce/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://public.tableau.com/app/profile/john.paul.panonce" target="_blank" rel="noopener noreferrer" aria-label="Tableau Public">
+                    <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.ultimate-guitar.com/u/jpasensi" target="_blank" rel="noopener noreferrer" aria-label="Ultimate Guitar">
+                    <i class="bi bi-music-note-beamed" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.khanacademy.org/profile/kaid_817055080752672436718813/projects" target="_blank" rel="noopener noreferrer" aria-label="Khan Academy">
+                    <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://share.streamlit.io/user/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="Streamlit">
+                    <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.freecodecamp.org/JohnPaulPanonce" target="_blank" rel="noopener noreferrer" aria-label="freeCodeCamp">
+                    <i class="bi bi-code-slash" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://leetcode.com/u/jp-panonce/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                    <i class="bi bi-terminal" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <div class="site-footer-meta" data-aos="fade-up" data-aos-delay="220">
+          <p>© 2018-present John Paul Panonce. All Rights Reserved.</p>
+          <div class="site-policy-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Code of Conduct</a>
+          </div>
+        </div>
       </div>
-      <br><br><br><br><br><br>
 
-    </section><!-- /Contact Section -->
+    </section>
 
   </main>
-
-  <br><br><br><br><br><br>
 
   
 
