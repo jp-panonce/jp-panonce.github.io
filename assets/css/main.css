@@ -267,14 +267,18 @@ body[data-theme="dark"] .header .social-links a.theme-toggle {
   gap: 16px;
   overflow: visible;
   border-right: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  box-shadow: 0 12px 30px color-mix(in srgb, var(--default-color), transparent 92%);
-  z-index: 1000;
+  border-bottom: 0;
+  box-shadow: none;
+  z-index: 2000;
 }
 
 .topnav-page #header ~ main,
 .topnav-page #header ~ #footer {
   margin-left: 0;
+}
+
+.topnav-page #header ~ main {
+  margin-top: 0;
 }
 
 .topnav-page #header .profile-img,
@@ -979,6 +983,11 @@ body.hero-transitioning .hero + .section {
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
   margin-bottom: 12px;
   background: color-mix(in srgb, var(--surface-color), transparent 8%);
+}
+
+.about .location-map .leaflet-top,
+.about .location-map .leaflet-bottom {
+  z-index: 500;
 }
 
 .about .card-photo {
@@ -2240,9 +2249,11 @@ body.hero-transitioning .hero + .section {
 }
 
 .site-social-strip img {
-  width: 18px !important;
-  height: 18px !important;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
+  display: block;
+  flex: none;
 }
 
 @media (max-width: 991px) {

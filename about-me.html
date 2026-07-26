@@ -39,7 +39,7 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="about-me.html"><i class="bi bi-person navicon"></i>About Me</a></li>
+        <li><a href="about-me.html" class="active" aria-current="page"><i class="bi bi-person navicon"></i>About Me</a></li>
         <li><a href="blog-home.html"><i class="bi bi-file-earmark-text navicon"></i>Blog</a></li>
         <li><a href="portfolio-details.html"><i class="bi bi-images navicon"></i>Creations</a></li>
         <li><a href="tools.html"><i class="bi bi-tools navicon"></i>Tools</a></li>
@@ -96,10 +96,9 @@
                   <br>
                   <b>Your personal <code>coding</code> companion</b> :)
                   <br><br>
-                  <!-- My superpower is <b><code>[materialize]</code></b> - a materializer of all your ideas, and turning them into something that makes your life easier -->
-                  <!-- <br><br> -->
-                  I started coding in high school and never stopped. Solving problems with code never gets boring. I love learning new stuff and exploring new tools and methods that makes life more bearable.
+                  I enjoy solving problems & building cool stuff with code.</b> It never gets boring. I love learning new stuff and exploring new tools and methods that makes life more bearable.
                   <br><br>
+                  I can confidently say I have the <b><code>[materialize]</code></b> superpower - a materializer of all your ideas, and turning them into something that makes your life easier
                 </p>
               </div>
               <img src="assets/img/me.png" class="img-fluid" alt="Portrait of John Paul Panonce" style="flex: 0 0 220px; margin-left: auto; max-width: 250px; width: auto; height: auto;">
@@ -112,44 +111,47 @@
 
           
 
-          <article class="mosaic-card card-fact span-5 span-rows-1">
+          <article class="mosaic-card card-fact span-4">
             <div id="cebuLocationMap" class="location-map" role="img" aria-label="Map showing Cebu City and the viewer location"></div>
-            <p style="font-size: small;"> <span id="viewerDistanceInfo" style="display: none;">You are roughly <b><em id="viewerDistanceKm">...</em></b> km away from your current location (<span id="viewerLocation">detecting...</span>), according to your IP address (<code id="viewerIp">...</code>)</span>.</p>
+            <p style="font-size: small;"> <span id="viewerDistanceInfo" style="display: none;">You are roughly <b><em id="viewerDistanceKm">...</em></b> km away from your current location (<span id="viewerLocation">detecting...</span>), according to your IP address (<code id="viewerIp">...</code>)</span></p>
             <br>
             <p class="caption">I'm from 📌<a href="https://en.wikipedia.org/wiki/Cebu_City" target="_blank">Cebu, Philippines</a> - known for savory food and beautiful beaches and the <a href="https://en.wikipedia.org/wiki/Sinulog" target="_blank"><code>Sinulog Festival</code></a>.</p>
           </article>
 
-          <!-- <article class="mosaic-card card-svg span-4">
-            <h4>Interactive SVG sample</h4>
-            
-            <svg class="sample-orbit" viewBox="0 0 180 120" role="img" aria-label="Animated orbit illustration">
-              <defs>
-                <linearGradient id="orbitStroke" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#19d3da"/>
-                  <stop offset="100%" stop-color="#4d6bff"/>
-                </linearGradient>
-              </defs>
-              <ellipse cx="90" cy="60" rx="64" ry="30" class="orbit-path"/>
-              <circle cx="90" cy="60" r="12" class="orbit-core"/>
-              <g class="satellite-wrap">
-                <circle cx="154" cy="60" r="6" class="satellite"/>
-              </g>
-            </svg>
-            <p class="caption">Hover this card to animate the orbit.</p>
-          </article> -->
-
-          <article class="mosaic-card card-links span-4">
-            <h4>Outside Coding...</h4>
-            <br>
+          <article class="mosaic-card card-links span-4 span-rows-2">
+            <h4>on my free time</h4>
+            <!-- <img src="assets/img/me-with-guitar.jpg " class="img-fluid" alt="John Paul Panonce playing guitar" style="height: 20%; width: auto; border-radius: 8px; margin-bottom: 8px;"> -->
             <p>I love watching 🍿movies, 🍙anime, and 💻TV shows. I play the 🎸guitar and 📚read a lot.</p>
             <br>
-            <p>My favorites are the classics, science fiction & any science/philosophy books. I also love to travel and explore new places, but I am a homebody at heart.</p>
+            <p>My favorites are the classics, science fiction & any science/philosophy books. I like to explore new places, but I am a homebody at heart.</p>
+            <br>
             <p>Read more in my blog <a href="blog-home.html#hobbies" target="_blank">here</a>.</p>
           </article>
 
-          <article class="mosaic-card card-links span-4">
-            <h4>Experience</h4>
-            <p>I've handled everything from electronics, embedded software to pure software</p>
+          <article class="mosaic-card card-links span-7">
+            <h4>My coding story</h4>
+            <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;">
+              <figure style="flex: 0 1 270px; width: min(100%, 270px); margin: 0;">
+                <iframe
+                  src="pages/day-and-night-processingjs.html"
+                  title="Day and Night ProcessingJS Animation"
+                  loading="lazy"
+                  style="width: 100%; aspect-ratio: 1 / 1; height: auto; border: 0; display: block;"
+                  scrolling="no"
+                  allowfullscreen>
+                </iframe>
+                <figcaption style="margin-top: 6px; font-size: 0.78rem; line-height: 1.3; color: #a9b3c8; font-style: italic; text-align: center;">
+                  My first coded animation written in ProcessingJS.<br>(Click the cord to switch between night & day)
+                </figcaption>
+              </figure>
+              <p style="flex: 1 1 160px; margin: 0;">
+                I started coding way back high school, inspired by a <a href="https://www.youtube.com/watch?v=nKIu9yen5nc" target="_blank">video</a> by some of the best minds. 
+                <br><br>
+                I never stopped. Solving problems with code never gets boring.
+                <br><br>
+                I've worked across the full stack of tech—from electronic circuits design to embedded systems, automation, networking, and modern web development.
+              </p>
+            </div>
           </article>
         </div>
       </div>
@@ -460,7 +462,7 @@
       </div>
 
       <br><br><br>
-      <button class="button-4" role="button"  style="display: block; width: fit-content; margin: 0 auto;"><a href="portfolio-details.html">SEE ALL PROJECTS</a></button>
+      <button class="button-4" role="button"  style="display: block; width: fit-content; margin: 0 auto;"onclick="document.location='portfolio-details.html'">VIEW ALL MY CREATIONS</button>
     </section>
 
     <!-- Skills Section -->
@@ -600,17 +602,16 @@
       </div>
       <br><br>
       <button class="button-4" role="button"  style="display: block; width: fit-content; margin: 0 auto;"onclick="document.location='pages/skills-details-dev.html'">SEE SKILL DETAILS</button>
-      
+      <br><br><br><br><br><br>
     </section><!-- /Skills Section -->
 
     <!-- Interests Section -->
-    <section id="interests" class="interests section light-background">
+    <!-- <section id="interests" class="interests section light-background">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Interests</h2>
         <div><span>In my personal time, these things keep me sane</span> <span class="description-title"></span></div>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container">
 
@@ -619,92 +620,98 @@
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="features-item">
               <i class="bi bi-eye" style="color: #ffbb2c;"></i>
-              <h3><a href="" class="stretched-link">Guitar & Music</a></h3>
+              <h3><a href="" class="stretched-link">Guitar</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
             <div class="features-item">
               <i class="bi bi-infinity" style="color: #5578ff;"></i>
-              <h3><a href="" class="stretched-link">Online Games</a></h3>
+              <h3><a href="" class="stretched-link">Gaming</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="features-item">
               <i class="bi bi-mortarboard" style="color: #e80368;"></i>
-              <h3><a href="" class="stretched-link">Board Games</a></h3>
+              <h3><a href="" class="stretched-link">Anime & Manga</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="features-item">
+            <div class="features-item feature-with-detail">
               <i class="bi bi-nut" style="color: #e361ff;"></i>
-              <h3><a href="" class="stretched-link">TV & Movies</a></h3>
+              <h3><a href="" class="stretched-link">Movies & TV Series</a></h3>
+              <div class="feature-detail">
+                <p>Take a peek on my own thoughts and experiences</p>
+                
+              </div>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
+          
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
             <div class="features-item">
               <i class="bi bi-shuffle" style="color: #47aeff;"></i>
               <h3><a href="" class="stretched-link">Anime</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
             <div class="features-item">
               <i class="bi bi-star" style="color: #ffa76e;"></i>
               <h3><a href="" class="stretched-link">Physical Sciences</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="features-item">
               <i class="bi bi-x-diamond" style="color: #11dbcf;"></i>
               <h3><a href="" class="stretched-link">Books</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
             <div class="features-item">
               <i class="bi bi-camera-video" style="color: #4233ff;"></i>
               <h3><a href="" class="stretched-link">Philosophy</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
             <div class="features-item">
               <i class="bi bi-command" style="color: #b2904f;"></i>
               <h3><a href="" class="stretched-link">Coding</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1000">
             <div class="features-item">
               <i class="bi bi-dribbble" style="color: #b20969;"></i>
               <h3><a href="" class="stretched-link">Sight-see</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1100">
             <div class="features-item">
               <i class="bi bi-activity" style="color: #ff5828;"></i>
               <h3><a href="" class="stretched-link">Organize</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
           <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1200">
             <div class="features-item">
               <i class="bi bi-brightness-high" style="color: #29cc61;"></i>
               <h3><a href="" class="stretched-link">Writing</a></h3>
             </div>
-          </div><!-- End Feature Item -->
+          </div>
 
         </div>
 
       </div>
+      <br><br><br><br><br><br>
 
-    </section><!-- /Interests Section -->
+    </section> -->
 
     
 
@@ -738,6 +745,7 @@
               Send me an email
             </a>
           </div>
+          
 
           <div class="footer-browse-panel" data-aos="fade-left" data-aos-delay="180">
             <div class="footer-browse-layout">
@@ -751,8 +759,17 @@
                 </ul>
               </div>
 
+              <div class="browse-links">
+                <h4 class="footer-subsection-title">GENERAL</h4>
+                <ul>
+                  <li><a href="about-me.html">About Me</a></li>
+                  <li><a href="#">About the site</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+
               <div class="find-me-links">
-                <h4>FIND ME HERE</h4>
+                <h6 class="footer-subsection-title">You can also find me here:</h6>
                 <div class="site-social-strip" data-aos="fade-up" data-aos-delay="260">
                   <a href="https://github.com/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <i class="bi bi-github" aria-hidden="true"></i>
@@ -761,22 +778,22 @@
                     <i class="bi bi-linkedin" aria-hidden="true"></i>
                   </a>
                   <a href="https://public.tableau.com/app/profile/john.paul.panonce" target="_blank" rel="noopener noreferrer" aria-label="Tableau Public">
-                    <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+                    <img src="assets/img/tableau-icon-svg.svg" alt="Tableau" style="width: 24px; height: 24px; object-fit: contain; display: block;">
                   </a>
                   <a href="https://www.ultimate-guitar.com/u/jpasensi" target="_blank" rel="noopener noreferrer" aria-label="Ultimate Guitar">
-                    <i class="bi bi-music-note-beamed" aria-hidden="true"></i>
+                    <img src="assets/img/Ultimate_Guitar_Icon.svg.webp" alt="Ultimate Guitar" style="width: 24px; height: 24px; object-fit: contain; display: block;">
                   </a>
                   <a href="https://www.khanacademy.org/profile/kaid_817055080752672436718813/projects" target="_blank" rel="noopener noreferrer" aria-label="Khan Academy">
-                    <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                    <img src="assets/img/khan-academy.svg" alt="Khan Academy" style="width: 24px; height: 24px; object-fit: contain; display: block;">
                   </a>
                   <a href="https://share.streamlit.io/user/jp-panonce" target="_blank" rel="noopener noreferrer" aria-label="Streamlit">
-                    <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+                    <img src="assets/img/streamlit-icon.webp" alt="Streamlit" style="width: 24px; height: 24px; object-fit: contain; display: block;">
                   </a>
                   <a href="https://www.freecodecamp.org/JohnPaulPanonce" target="_blank" rel="noopener noreferrer" aria-label="freeCodeCamp">
-                    <i class="bi bi-code-slash" aria-hidden="true"></i>
+                    <img src="assets/img/freecodecamp-icon.svg" alt="freecodecamp.org" style="width: 24px; height: 24px; object-fit: contain; display: block;">
                   </a>
                   <a href="https://leetcode.com/u/jp-panonce/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
-                    <i class="bi bi-terminal" aria-hidden="true"></i>
+                    <img src="assets/img/leetcode-icon.svg" alt="Leet Code" style="width: 24px; height: 24px; object-fit: contain; display: block;">
                   </a>
                 </div>
               </div>

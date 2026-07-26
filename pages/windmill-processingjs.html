@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day and Night ProcessingJS</title>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 20% 20%, #253548, #121722 65%);
+      font-family: "Poppins", sans-serif;
+    }
+
+    .frame {
+      width: min(96vw, 880px);
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      padding: 14px;
+      box-sizing: border-box;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      display: grid;
+      place-items: center;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 14px;
+      display: block;
+      background: #0c1320;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="frame">
+    <canvas id="dayNightCanvas" width="400" height="400"></canvas>
+  </div>
+
+  <script src="../assets/js/windmill-processingjs-init.js"></script>
+</body>
+
+</html>
