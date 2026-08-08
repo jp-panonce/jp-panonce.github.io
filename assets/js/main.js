@@ -221,6 +221,58 @@
   initHeroSnapScroll();
 
   /**
+   * Reveal skill labels without losing hover when the label lane expands.
+   */
+  function initHoverSkillBadges() {
+    document.querySelectorAll('.hover-skill-badges').forEach((badgeRow) => {
+      function clearActiveBadge() {
+        badgeRow.querySelector('.hover-skill-badge.is-active')?.classList.remove('is-active');
+        badgeRow.classList.remove('has-active-badge');
+        badgeRow.style.removeProperty('--active-badge-center');
+      }
+
+      function setActiveBadge(badge) {
+        clearActiveBadge();
+        const badgeRect = badge.getBoundingClientRect();
+        const rowRect = badgeRow.getBoundingClientRect();
+        const badgeCenter = badgeRect.left - rowRect.left + (badgeRect.width / 2);
+
+        badgeRow.style.setProperty('--active-badge-center', `${badgeCenter}px`);
+        badge.classList.add('is-active');
+        badgeRow.classList.add('has-active-badge');
+      }
+
+      badgeRow.addEventListener('pointerover', (event) => {
+        const badge = event.target.closest('.hover-skill-badge');
+        if (badge && badgeRow.contains(badge)) {
+          setActiveBadge(badge);
+        }
+      });
+
+      badgeRow.addEventListener('pointerleave', () => {
+        if (!badgeRow.contains(document.activeElement)) {
+          clearActiveBadge();
+        }
+      });
+
+      badgeRow.addEventListener('focusin', (event) => {
+        const badge = event.target.closest('.hover-skill-badge');
+        if (badge) {
+          setActiveBadge(badge);
+        }
+      });
+
+      badgeRow.addEventListener('focusout', (event) => {
+        if (!badgeRow.contains(event.relatedTarget)) {
+          clearActiveBadge();
+        }
+      });
+    });
+  }
+
+  initHoverSkillBadges();
+
+  /**
    * Header toggle
    */
   const headerToggleBtn = document.querySelector('.header-toggle');
