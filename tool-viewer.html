@@ -220,6 +220,10 @@
       --category-color: #4ade80;
     }
 
+    .tool-nav-group.dashboards {
+      --category-color: #f472b6;
+    }
+
     .tool-nav-group h2 {
       margin: 0 10px 7px;
       color: var(--category-color);
@@ -341,6 +345,15 @@
       height: 100vh;
     }
 
+    .tool-viewer-content.dashboard-view {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background: #e5e7eb;
+    }
+
     .tool-open-link {
       display: inline-flex;
       min-height: 40px;
@@ -375,6 +388,28 @@
       height: 100%;
       border: 0;
       background: #ffffff;
+    }
+
+    .tool-frame-stage {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dashboard-view .tool-frame-stage {
+      width: min(100%, calc((100vh - 40px) * 1600 / 927));
+      height: auto;
+      max-height: 100%;
+      aspect-ratio: 1600 / 927;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+    }
+
+    .dashboard-view .tool-frame {
+      width: 1600px;
+      height: 927px;
+      transform: scale(var(--dashboard-scale, 1));
+      transform-origin: top left;
     }
 
     .tool-embed-placeholder {
@@ -493,6 +528,14 @@
       .tool-mobile-toggle {
         display: inline-grid;
       }
+
+      .tool-viewer-content.dashboard-view {
+        padding: 12px;
+      }
+
+      .dashboard-view .tool-frame-stage {
+        width: min(100%, calc((100vh - 24px) * 1600 / 927));
+      }
     }
   </style>
 </head>
@@ -543,6 +586,14 @@
           <a href="tool-viewer.html?app=fun-with-flags" data-app="fun-with-flags" data-url="pages/fun_with_flags.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/fun_with_flags.html" data-title="Fun with Flags!"><i class="bi bi-flag"></i><span>Fun with Flags!</span></a>
           <a href="tool-viewer.html?app=quiz-it" data-app="quiz-it" data-url="pages/quiz_it.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/quiz_it.html" data-title="Quiz it!"><i class="bi bi-patch-question"></i><span>Quiz it!</span></a>
         </div>
+
+        <div class="tool-nav-group dashboards">
+          <h2>Dashboards</h2>
+          <a href="tool-viewer.html?app=crayola-colors" data-app="crayola-colors" data-url="https://public.tableau.com/views/crayola_colors/16-Box?:showVizHome=no" data-external="https://public.tableau.com/app/profile/john.paul.panonce/viz/crayola_colors/16-Box" data-title="The Crayola Colors"><i class="bi bi-bar-chart-line"></i><span>The Crayola Colors</span></a>
+          <a href="tool-viewer.html?app=nw-pacific-typhoons" data-app="nw-pacific-typhoons" data-url="https://public.tableau.com/views/AnAnalysisofTyphoonsintheNWPacificBasin/PATTERNS?:showVizHome=no" data-external="https://public.tableau.com/app/profile/john.paul.panonce/viz/AnAnalysisofTyphoonsintheNWPacificBasin/PATTERNS" data-title="NW Pacific Typhoons"><i class="bi bi-hurricane"></i><span>NW Pacific Typhoons</span></a>
+          <a href="tool-viewer.html?app=locked-up" data-app="locked-up" data-url="https://public.tableau.com/views/LockedUpAlookintoincarcerationpercountry/LOCKEDUP?:showVizHome=no" data-external="https://public.tableau.com/app/profile/john.paul.panonce/viz/LockedUpAlookintoincarcerationpercountry/LOCKEDUP" data-title="Locked Up: State of World Prisons"><i class="bi bi-bar-chart-line"></i><span>Locked Up: State of World Prisons</span></a>
+          <a href="tool-viewer.html?app=philippine-climate" data-app="philippine-climate" data-url="https://public.tableau.com/views/PhilippineClimate/OVERVIEW?:showVizHome=no" data-external="https://public.tableau.com/app/profile/john.paul.panonce/viz/PhilippineClimate/OVERVIEW" data-title="Philippines: Climatological Overview"><i class="bi bi-cloud-sun"></i><span>Philippines: Climatological Overview</span></a>
+        </div>
         <p class="tool-search-empty" id="tool-search-empty" hidden>No matching tools</p>
       </nav>
 
@@ -559,7 +610,9 @@
       <button class="tool-icon-button tool-mobile-toggle" id="mobile-sidebar-toggle" type="button" aria-label="Open tool navigation" aria-controls="tool-sidebar" aria-expanded="false" title="Open navigation">
         <i class="bi bi-list" aria-hidden="true"></i>
       </button>
-      <iframe class="tool-frame" id="tool-frame" src="about:blank" title="MemPi"></iframe>
+      <div class="tool-frame-stage" id="tool-frame-stage">
+        <iframe class="tool-frame" id="tool-frame" src="about:blank" title="MemPi"></iframe>
+      </div>
       <section class="tool-embed-placeholder" id="tool-embed-placeholder" hidden>
         <div class="tool-placeholder-content">
           <h2 id="tool-placeholder-title">Open this app separately</h2>
@@ -576,6 +629,8 @@
   <script>
     (() => {
       const viewer = document.getElementById('tool-viewer');
+      const viewerContent = document.querySelector('.tool-viewer-content');
+      const frameStage = document.getElementById('tool-frame-stage');
       const frame = document.getElementById('tool-frame');
       const embedPlaceholder = document.getElementById('tool-embed-placeholder');
       const placeholderTitle = document.getElementById('tool-placeholder-title');
@@ -588,6 +643,17 @@
       const searchEmpty = document.getElementById('tool-search-empty');
       const appLinks = [...document.querySelectorAll('[data-app]')];
       const mobileMedia = window.matchMedia('(max-width: 767px)');
+
+      function sizeDashboardFrame() {
+        if (!viewerContent.classList.contains('dashboard-view')) {
+          frame.style.removeProperty('--dashboard-scale');
+          return;
+        }
+
+        frame.style.setProperty('--dashboard-scale', frameStage.clientWidth / 1600);
+      }
+
+      new ResizeObserver(sizeDashboardFrame).observe(frameStage);
 
       appLinks.forEach((link) => {
         const item = document.createElement('div');
@@ -602,22 +668,26 @@
 
         actions.className = 'tool-nav-actions';
         externalLink.className = 'tool-nav-action';
-        externalLink.href = link.dataset.url;
+        externalLink.href = link.dataset.external || link.dataset.url;
         externalLink.target = '_blank';
         externalLink.rel = 'noopener noreferrer';
         externalLink.title = `Open ${link.dataset.title} in a new tab`;
         externalLink.setAttribute('aria-label', externalLink.title);
         externalLink.innerHTML = '<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>';
 
-        sourceLink.className = 'tool-nav-action';
-        sourceLink.href = link.dataset.source;
-        sourceLink.target = '_blank';
-        sourceLink.rel = 'noopener noreferrer';
-        sourceLink.title = `View ${link.dataset.title} source on GitHub`;
-        sourceLink.setAttribute('aria-label', sourceLink.title);
-        sourceLink.innerHTML = '<i class="bi bi-github" aria-hidden="true"></i>';
+        actions.append(externalLink);
 
-        actions.append(externalLink, sourceLink);
+        if (link.dataset.source) {
+          sourceLink.className = 'tool-nav-action';
+          sourceLink.href = link.dataset.source;
+          sourceLink.target = '_blank';
+          sourceLink.rel = 'noopener noreferrer';
+          sourceLink.title = `View ${link.dataset.title} source on GitHub`;
+          sourceLink.setAttribute('aria-label', sourceLink.title);
+          sourceLink.innerHTML = '<i class="bi bi-github" aria-hidden="true"></i>';
+          actions.append(sourceLink);
+        }
+
         item.appendChild(actions);
       });
 
@@ -637,7 +707,14 @@
 
         appLinks.forEach((link) => {
           const title = normalizeSearchText(link.dataset.title);
-          const isMatch = terms.every((term) => title.includes(term));
+          const titleWords = title.split(' ');
+          const isMatch = terms.every((term) => {
+            if (title.includes(term)) {
+              return true;
+            }
+
+            return term.length >= 5 && titleWords.some((word) => word.startsWith(term.slice(0, 5)));
+          });
           link.parentElement.hidden = !isMatch;
           visibleCount += Number(isMatch);
         });
@@ -673,7 +750,9 @@
       function loadApp(appId, updateHistory = false) {
         const selectedLink = appLinks.find((link) => link.dataset.app === appId) || appLinks[0];
         const appUrl = selectedLink.dataset.url;
+        const externalUrl = selectedLink.dataset.external || appUrl;
         const appTitle = selectedLink.dataset.title;
+        const isDashboard = selectedLink.closest('.tool-nav-group')?.classList.contains('dashboards');
 
         appLinks.forEach((link) => {
           const isActive = link === selectedLink;
@@ -686,6 +765,8 @@
         });
 
         const isEmbeddable = selectedLink.dataset.embeddable !== 'false';
+        viewerContent.classList.toggle('dashboard-view', isDashboard);
+        requestAnimationFrame(sizeDashboardFrame);
         frame.hidden = !isEmbeddable;
         embedPlaceholder.hidden = isEmbeddable;
 
@@ -694,7 +775,7 @@
         } else {
           frame.src = 'about:blank';
           placeholderTitle.textContent = `${appTitle} opens in a new tab`;
-          placeholderLink.href = appUrl;
+          placeholderLink.href = externalUrl;
         }
 
         frame.title = appTitle;
