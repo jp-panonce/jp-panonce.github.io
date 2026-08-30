@@ -177,6 +177,45 @@
       min-height: 0;
       overflow-y: auto;
       padding: 16px 10px;
+      scrollbar-width: none;
+    }
+
+    .tool-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tool-scroll-guide {
+      position: absolute;
+      z-index: 2;
+      right: 3px;
+      width: 3px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease;
+    }
+
+    .tool-scroll-guide::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 1px;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.12);
+      content: "";
+    }
+
+    .tool-scroll-guide-thumb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      border-radius: 2px;
+      background: rgba(186, 199, 216, 0.72);
+      transform: translateY(0);
+    }
+
+    .tool-viewer:not(.sidebar-collapsed) .tool-scroll-guide.is-scrollable.is-scroll-active {
+      opacity: 1;
     }
 
     .tool-sidebar-support {
@@ -453,6 +492,20 @@
       display: none;
     }
 
+    @media (forced-colors: active) {
+      .tool-nav {
+        scrollbar-width: auto;
+      }
+
+      .tool-nav::-webkit-scrollbar {
+        display: initial;
+      }
+
+      .tool-scroll-guide {
+        display: none;
+      }
+    }
+
     @media (max-width: 767px) {
       .tool-viewer,
       .tool-viewer.sidebar-collapsed {
@@ -596,6 +649,9 @@
         </div>
         <p class="tool-search-empty" id="tool-search-empty" hidden>No matching tools</p>
       </nav>
+      <div class="tool-scroll-guide" id="tool-scroll-guide" aria-hidden="true">
+        <span class="tool-scroll-guide-thumb" id="tool-scroll-guide-thumb"></span>
+      </div>
 
       <div class="tool-sidebar-support">
         <a href="https://buymeacoffee.com/jpanonce" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee">
@@ -630,6 +686,9 @@
     (() => {
       const viewer = document.getElementById('tool-viewer');
       const viewerContent = document.querySelector('.tool-viewer-content');
+      const toolNav = document.querySelector('.tool-nav');
+      const scrollGuide = document.getElementById('tool-scroll-guide');
+      const scrollGuideThumb = document.getElementById('tool-scroll-guide-thumb');
       const frameStage = document.getElementById('tool-frame-stage');
       const frame = document.getElementById('tool-frame');
       const embedPlaceholder = document.getElementById('tool-embed-placeholder');
@@ -643,6 +702,50 @@
       const searchEmpty = document.getElementById('tool-search-empty');
       const appLinks = [...document.querySelectorAll('[data-app]')];
       const mobileMedia = window.matchMedia('(max-width: 767px)');
+      let scrollGuideTimer;
+
+      function updateScrollGuide() {
+        const viewportHeight = toolNav.clientHeight;
+        const scrollRange = toolNav.scrollHeight - viewportHeight;
+        const isScrollable = scrollRange > 1;
+
+        scrollGuide.classList.toggle('is-scrollable', isScrollable);
+        scrollGuide.style.top = `${toolNav.offsetTop}px`;
+        scrollGuide.style.height = `${viewportHeight}px`;
+
+        if (!isScrollable) {
+          scrollGuide.classList.remove('is-scroll-active');
+          return;
+        }
+
+        const thumbHeight = Math.max(28, viewportHeight * viewportHeight / toolNav.scrollHeight);
+        const thumbOffset = toolNav.scrollTop / scrollRange * (viewportHeight - thumbHeight);
+        scrollGuideThumb.style.height = `${thumbHeight}px`;
+        scrollGuideThumb.style.transform = `translateY(${thumbOffset}px)`;
+      }
+
+      function showScrollGuide() {
+        updateScrollGuide();
+        if (!scrollGuide.classList.contains('is-scrollable')) {
+          return;
+        }
+
+        scrollGuide.classList.add('is-scroll-active');
+        window.clearTimeout(scrollGuideTimer);
+        scrollGuideTimer = window.setTimeout(() => {
+          scrollGuide.classList.remove('is-scroll-active');
+        }, 700);
+      }
+
+      toolNav.addEventListener('scroll', showScrollGuide, { passive: true });
+      toolNav.addEventListener('wheel', showScrollGuide, { passive: true });
+      toolNav.addEventListener('touchmove', showScrollGuide, { passive: true });
+      toolNav.addEventListener('keydown', (event) => {
+        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) {
+          showScrollGuide();
+        }
+      });
+      new ResizeObserver(updateScrollGuide).observe(toolNav);
 
       function sizeDashboardFrame() {
         if (!viewerContent.classList.contains('dashboard-view')) {
@@ -725,6 +828,7 @@
 
         searchClear.hidden = searchInput.value.length === 0;
         searchEmpty.hidden = visibleCount !== 0;
+        updateScrollGuide();
       }
 
       searchInput.addEventListener('input', filterTools);
@@ -745,6 +849,7 @@
         sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
         mobileToggle.setAttribute('aria-expanded', String(!collapsed));
         sidebarToggle.setAttribute('aria-label', collapsed ? 'Expand tool navigation' : 'Collapse tool navigation');
+        requestAnimationFrame(updateScrollGuide);
       }
 
       function loadApp(appId, updateHistory = false) {
