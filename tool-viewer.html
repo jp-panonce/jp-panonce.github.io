@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>JP's Toolkit</title>
+  <link href="assets/jp_logo_light.png" rel="icon">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    body.tool-viewer-page {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .tool-viewer {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      height: 100vh;
+      background: var(--background-color);
+      transition: grid-template-columns 0.25s ease;
+    }
+
+    .tool-viewer.sidebar-collapsed {
+      grid-template-columns: 72px minmax(0, 1fr);
+    }
+
+    .tool-sidebar {
+      position: relative;
+      z-index: 20;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 86%);
+      background: #040b14;
+      color: #ffffff;
+    }
+
+    .tool-sidebar-header {
+      display: flex;
+      min-height: 64px;
+      align-items: center;
+    }
+
+    .tool-sidebar-header {
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .tool-sidebar-brand {
+      display: flex;
+      min-width: 0;
+      align-items: flex-end;
+      gap: 8px;
+      color: #ffffff;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .tool-sidebar-brand img {
+      width: auto;
+      height: auto;
+      max-height: 40px;
+      object-fit: contain;
+      scale: 120%;
+    }
+
+    .tool-sidebar-brand h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: large;
+      font-weight: 700;
+    }
+
+    .tool-icon-button {
+      display: inline-grid;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      place-items: center;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: inherit;
+      font-size: 20px;
+    }
+
+    .tool-icon-button:hover,
+    .tool-icon-button:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .tool-sidebar-search {
+      position: relative;
+      flex: 0 0 auto;
+      padding: 12px 10px 0;
+    }
+
+    .tool-sidebar-search > i {
+      position: absolute;
+      top: 32px;
+      left: 22px;
+      color: #7f91aa;
+      font-size: 14px;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .tool-sidebar-search input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      padding: 8px 38px 8px 36px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 6px;
+      outline: 0;
+      background: #0d1724;
+      color: #ffffff;
+      font: 14px var(--nav-font);
+    }
+
+    .tool-sidebar-search input::placeholder {
+      color: #7f91aa;
+    }
+
+    .tool-sidebar-search input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.16);
+    }
+
+    .tool-search-clear {
+      position: absolute;
+      top: 18px;
+      right: 16px;
+      display: inline-grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 0;
+      border-radius: 4px;
+      background: transparent;
+      color: #bac7d8;
+      font-size: 18px;
+    }
+
+    .tool-search-clear:hover,
+    .tool-search-clear:focus-visible {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .tool-search-clear i {
+      position: static;
+      transform: none;
+    }
+
+    .tool-search-clear[hidden],
+    .tool-nav-item[hidden],
+    .tool-nav-group[hidden] {
+      display: none;
+    }
+
+    .tool-search-empty {
+      margin: 20px 10px;
+      color: #7f91aa;
+      font: 13px var(--nav-font);
+      text-align: center;
+    }
+
+    .tool-nav {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 16px 10px;
+    }
+
+    .tool-sidebar-support {
+      flex: 0 0 auto;
+      padding: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      text-align: center;
+    }
+
+    .tool-sidebar-support a {
+      display: inline-block;
+      width: min(180px, 100%);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .tool-sidebar-support a:hover,
+    .tool-sidebar-support a:focus-visible {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+    }
+
+    .tool-sidebar-support img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .tool-nav-group + .tool-nav-group {
+      margin-top: 20px;
+    }
+
+    .tool-nav-group.games {
+      --category-color: #fbbf24;
+    }
+
+    .tool-nav-group.tools {
+      --category-color: #38bdf8;
+    }
+
+    .tool-nav-group.learning {
+      --category-color: #4ade80;
+    }
+
+    .tool-nav-group h2 {
+      margin: 0 10px 7px;
+      color: var(--category-color);
+      font-family: var(--nav-font);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .tool-nav-item {
+      position: relative;
+    }
+
+    .tool-nav .tool-app-link {
+      box-sizing: border-box;
+      display: flex;
+      min-height: 44px;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 72px 9px 12px;
+      border-radius: 6px;
+      color: #bac7d8;
+      font-family: var(--nav-font);
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .tool-nav .tool-app-link i {
+      width: 22px;
+      flex: 0 0 22px;
+      color: var(--category-color);
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .tool-nav .tool-app-link:hover,
+    .tool-nav .tool-app-link.active {
+      background: #162536;
+      color: #ffffff;
+    }
+
+    .tool-nav-actions {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      display: flex;
+      gap: 2px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .tool-nav-action {
+      display: inline-grid;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      place-items: center;
+      border-radius: 5px;
+      color: #bac7d8;
+    }
+
+    .tool-nav-action i {
+      font-size: 14px;
+    }
+
+    .tool-nav-item:hover .tool-nav-actions,
+    .tool-nav-item:focus-within .tool-nav-actions,
+    .tool-app-link.active + .tool-nav-actions {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .tool-nav-action:hover,
+    .tool-nav-action:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .sidebar-collapsed .tool-sidebar-brand h1,
+    .sidebar-collapsed .tool-nav-group h2,
+    .sidebar-collapsed .tool-app-link span {
+      display: none;
+    }
+
+    .sidebar-collapsed .tool-sidebar-header {
+      flex-direction: column;
+      padding-inline: 10px;
+    }
+
+    .sidebar-collapsed .tool-nav-item {
+      min-height: 44px;
+    }
+
+    .sidebar-collapsed .tool-app-link {
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 0;
+    }
+
+    .sidebar-collapsed .tool-nav-actions {
+      display: none;
+    }
+
+    .sidebar-collapsed .tool-sidebar-search {
+      display: none;
+    }
+
+    .sidebar-collapsed .tool-sidebar-support {
+      display: none;
+    }
+
+    .tool-viewer-content {
+      position: relative;
+      min-width: 0;
+      height: 100vh;
+    }
+
+    .tool-open-link {
+      display: inline-flex;
+      min-height: 40px;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: var(--accent-color);
+      color: var(--contrast-color);
+      font-weight: 600;
+    }
+
+    .tool-open-link:hover {
+      color: var(--contrast-color);
+      filter: brightness(1.08);
+    }
+
+    .tool-mobile-toggle {
+      display: none;
+      position: absolute;
+      z-index: 5;
+      top: 12px;
+      left: 12px;
+      background: #040b14;
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .tool-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
+    .tool-embed-placeholder {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      background: var(--background-color);
+      text-align: center;
+    }
+
+    .tool-embed-placeholder[hidden],
+    .tool-frame[hidden] {
+      display: none;
+    }
+
+    .tool-placeholder-content {
+      width: min(100%, 520px);
+    }
+
+    .tool-placeholder-content h2 {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 4vw, 34px);
+    }
+
+    .tool-placeholder-content p {
+      margin: 0 0 24px;
+      color: var(--default-color);
+      line-height: 1.7;
+    }
+
+    .tool-placeholder-content .tool-open-link {
+      min-height: 46px;
+      padding-inline: 18px;
+    }
+
+    .tool-sidebar-overlay {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .tool-viewer,
+      .tool-viewer.sidebar-collapsed {
+        display: block;
+      }
+
+      .tool-sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(84vw, 300px);
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+      }
+
+      .tool-viewer:not(.sidebar-collapsed) .tool-sidebar {
+        transform: translateX(0);
+      }
+
+      .tool-viewer:not(.sidebar-collapsed) .tool-sidebar-overlay {
+        position: fixed;
+        z-index: 10;
+        inset: 0;
+        display: block;
+        border: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .tool-sidebar-header {
+        flex-direction: row;
+      }
+
+      .sidebar-collapsed .tool-sidebar-brand h1,
+      .sidebar-collapsed .tool-nav-group h2,
+      .sidebar-collapsed .tool-app-link span {
+        display: initial;
+      }
+
+      .sidebar-collapsed .tool-nav-item {
+        min-height: 44px;
+      }
+
+      .sidebar-collapsed .tool-app-link {
+        min-height: 44px;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 9px 72px 9px 12px;
+      }
+
+      .sidebar-collapsed .tool-nav-actions {
+        display: flex;
+        top: 50%;
+        right: 7px;
+        bottom: auto;
+        left: auto;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-50%);
+      }
+
+      .sidebar-collapsed .tool-nav-item:hover .tool-nav-actions,
+      .sidebar-collapsed .tool-nav-item:focus-within .tool-nav-actions,
+      .sidebar-collapsed .tool-app-link.active + .tool-nav-actions {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .sidebar-collapsed .tool-nav-action {
+        width: 30px;
+        height: 30px;
+        flex-basis: 30px;
+      }
+
+      .tool-mobile-toggle {
+        display: inline-grid;
+      }
+    }
+  </style>
+</head>
+
+<body class="tool-viewer-page">
+  <div class="tool-viewer" id="tool-viewer">
+    <aside class="tool-sidebar" id="tool-sidebar" aria-label="Tool navigation">
+      <div class="tool-sidebar-header">
+        <a class="tool-sidebar-brand" href="tools.html">
+          <img src="assets/jp_logo_light.png" alt="JP. Panonce logo">
+          <h1>.tools</h1>
+        </a>
+        <button class="tool-icon-button" id="sidebar-toggle" type="button" aria-label="Collapse tool navigation" aria-controls="tool-sidebar" aria-expanded="true" title="Toggle navigation">
+          <i class="bi bi-layout-sidebar-inset" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="tool-sidebar-search" role="search">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        <input id="tool-search" type="search" placeholder="Search tools" aria-label="Search tools" autocomplete="off">
+        <button class="tool-search-clear" id="tool-search-clear" type="button" aria-label="Clear search" title="Clear search" hidden>
+          <i class="bi bi-x" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <nav class="tool-nav">
+        <div class="tool-nav-group games">
+          <h2>Games</h2>
+          <a href="tool-viewer.html?app=mempi" data-app="mempi" data-url="https://jp-panonce.github.io/memPi/" data-source="https://github.com/jp-panonce/memPi" data-title="MemPi"><i class="bi bi-grid-3x3-gap"></i><span>MemPi</span></a>
+          <a href="tool-viewer.html?app=guess-the-rgb" data-app="guess-the-rgb" data-url="https://jp-panonce.github.io/OnePageHTMLs/guessTheRGB.html" data-source="https://github.com/jp-panonce/OnePageHTMLs/blob/main/guessTheRGB.html" data-title="Guess the RGB"><i class="bi bi-palette"></i><span>Guess the RGB</span></a>
+        </div>
+
+        <div class="tool-nav-group tools">
+          <h2>Tools</h2>
+          <a href="tool-viewer.html?app=randomizer" data-app="randomizer" data-url="pages/randomizer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/randomizer.html" data-title="Randomizer"><i class="bi bi-shuffle"></i><span>Randomizer</span></a>
+          <a href="tool-viewer.html?app=metronome" data-app="metronome" data-url="pages/metronome.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/metronome.html" data-title="Metronome"><i class="bi bi-music-note-beamed"></i><span>Metronome</span></a>
+          <a href="tool-viewer.html?app=color-picker" data-app="color-picker" data-url="pages/color_picker.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/color_picker.html" data-title="Color Picker"><i class="bi bi-eyedropper"></i><span>Color Picker</span></a>
+          <a href="tool-viewer.html?app=meditate" data-app="meditate" data-url="pages/meditate.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/meditate.html" data-title="Meditate"><i class="bi bi-wind"></i><span>Meditate</span></a>
+          <a href="tool-viewer.html?app=calculator" data-app="calculator" data-url="pages/calculator.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/calculator.html" data-title="Calculator"><i class="bi bi-calculator"></i><span>Calculator</span></a>
+          <a href="tool-viewer.html?app=chemical-equation-balancer" data-app="chemical-equation-balancer" data-url="pages/chemical_equation_balancer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/chemical_equation_balancer.html" data-title="Chemical Equation Balancer"><i class="bi bi-hexagon"></i><span>Chemical Equation Balancer</span></a>
+        </div>
+
+        <div class="tool-nav-group learning">
+          <h2>Learning</h2>
+          <a href="tool-viewer.html?app=periodic-table" data-app="periodic-table" data-url="https://jp-panonce.github.io/periodic_table_js/" data-source="https://github.com/jp-panonce/periodic_table_js" data-title="Periodic Table"><i class="bi bi-table"></i><span>Periodic Table</span></a>
+          <a href="tool-viewer.html?app=trigo-functions" data-app="trigo-functions" data-url="https://www.khanacademy.org/computer-programming/trigo-functions-made-easier/5863476127" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/trigo_functions_visualized.html" data-title="Trigo Functions Visualized" data-embeddable="false"><i class="bi bi-graph-up"></i><span>Trigo Functions Visualized</span></a>
+          <a href="tool-viewer.html?app=ece-board-exam" data-app="ece-board-exam" data-url="https://ece-boards-ph-practiceapp.streamlit.app/" data-source="https://github.com/jp-panonce/ECE-Boards-Practice_st" data-title="ECE Board Exam Assistant" data-embeddable="false"><i class="bi bi-mortarboard"></i><span>ECE Board Exam Assistant</span></a>
+          <a href="tool-viewer.html?app=fun-with-flags" data-app="fun-with-flags" data-url="pages/fun_with_flags.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/fun_with_flags.html" data-title="Fun with Flags!"><i class="bi bi-flag"></i><span>Fun with Flags!</span></a>
+          <a href="tool-viewer.html?app=quiz-it" data-app="quiz-it" data-url="pages/quiz_it.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/quiz_it.html" data-title="Quiz it!"><i class="bi bi-patch-question"></i><span>Quiz it!</span></a>
+        </div>
+        <p class="tool-search-empty" id="tool-search-empty" hidden>No matching tools</p>
+      </nav>
+
+      <div class="tool-sidebar-support">
+        <a href="https://buymeacoffee.com/jpanonce" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee">
+          <img src="assets/img/buymecoffee_default-yellow.png" alt="Buy me a coffee">
+        </a>
+      </div>
+    </aside>
+
+    <button class="tool-sidebar-overlay" id="sidebar-overlay" type="button" aria-label="Close tool navigation"></button>
+
+    <main class="tool-viewer-content">
+      <button class="tool-icon-button tool-mobile-toggle" id="mobile-sidebar-toggle" type="button" aria-label="Open tool navigation" aria-controls="tool-sidebar" aria-expanded="false" title="Open navigation">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+      <iframe class="tool-frame" id="tool-frame" src="about:blank" title="MemPi"></iframe>
+      <section class="tool-embed-placeholder" id="tool-embed-placeholder" hidden>
+        <div class="tool-placeholder-content">
+          <h2 id="tool-placeholder-title">Open this app separately</h2>
+          <p>This app cannot be displayed inside the toolkit. 😔<br>Open it in a new tab to continue.</p>
+          <a class="tool-open-link" id="tool-placeholder-link" href="#" target="_blank" rel="noopener noreferrer">
+            Open in new tab
+            <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const viewer = document.getElementById('tool-viewer');
+      const frame = document.getElementById('tool-frame');
+      const embedPlaceholder = document.getElementById('tool-embed-placeholder');
+      const placeholderTitle = document.getElementById('tool-placeholder-title');
+      const placeholderLink = document.getElementById('tool-placeholder-link');
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      const mobileToggle = document.getElementById('mobile-sidebar-toggle');
+      const overlay = document.getElementById('sidebar-overlay');
+      const searchInput = document.getElementById('tool-search');
+      const searchClear = document.getElementById('tool-search-clear');
+      const searchEmpty = document.getElementById('tool-search-empty');
+      const appLinks = [...document.querySelectorAll('[data-app]')];
+      const mobileMedia = window.matchMedia('(max-width: 767px)');
+
+      appLinks.forEach((link) => {
+        const item = document.createElement('div');
+        const actions = document.createElement('div');
+        const externalLink = document.createElement('a');
+        const sourceLink = document.createElement('a');
+
+        item.className = 'tool-nav-item';
+        link.classList.add('tool-app-link');
+        link.before(item);
+        item.appendChild(link);
+
+        actions.className = 'tool-nav-actions';
+        externalLink.className = 'tool-nav-action';
+        externalLink.href = link.dataset.url;
+        externalLink.target = '_blank';
+        externalLink.rel = 'noopener noreferrer';
+        externalLink.title = `Open ${link.dataset.title} in a new tab`;
+        externalLink.setAttribute('aria-label', externalLink.title);
+        externalLink.innerHTML = '<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>';
+
+        sourceLink.className = 'tool-nav-action';
+        sourceLink.href = link.dataset.source;
+        sourceLink.target = '_blank';
+        sourceLink.rel = 'noopener noreferrer';
+        sourceLink.title = `View ${link.dataset.title} source on GitHub`;
+        sourceLink.setAttribute('aria-label', sourceLink.title);
+        sourceLink.innerHTML = '<i class="bi bi-github" aria-hidden="true"></i>';
+
+        actions.append(externalLink, sourceLink);
+        item.appendChild(actions);
+      });
+
+      function normalizeSearchText(value) {
+        return value
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, ' ')
+          .trim();
+      }
+
+      function filterTools() {
+        const query = normalizeSearchText(searchInput.value);
+        const terms = query.split(' ').filter(Boolean);
+        let visibleCount = 0;
+
+        appLinks.forEach((link) => {
+          const title = normalizeSearchText(link.dataset.title);
+          const isMatch = terms.every((term) => title.includes(term));
+          link.parentElement.hidden = !isMatch;
+          visibleCount += Number(isMatch);
+        });
+
+        document.querySelectorAll('.tool-nav-group').forEach((group) => {
+          group.hidden = !group.querySelector('.tool-nav-item:not([hidden])');
+        });
+
+        searchClear.hidden = searchInput.value.length === 0;
+        searchEmpty.hidden = visibleCount !== 0;
+      }
+
+      searchInput.addEventListener('input', filterTools);
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && searchInput.value) {
+          searchInput.value = '';
+          filterTools();
+        }
+      });
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        filterTools();
+        searchInput.focus();
+      });
+
+      function setSidebarCollapsed(collapsed) {
+        viewer.classList.toggle('sidebar-collapsed', collapsed);
+        sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
+        mobileToggle.setAttribute('aria-expanded', String(!collapsed));
+        sidebarToggle.setAttribute('aria-label', collapsed ? 'Expand tool navigation' : 'Collapse tool navigation');
+      }
+
+      function loadApp(appId, updateHistory = false) {
+        const selectedLink = appLinks.find((link) => link.dataset.app === appId) || appLinks[0];
+        const appUrl = selectedLink.dataset.url;
+        const appTitle = selectedLink.dataset.title;
+
+        appLinks.forEach((link) => {
+          const isActive = link === selectedLink;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+
+        const isEmbeddable = selectedLink.dataset.embeddable !== 'false';
+        frame.hidden = !isEmbeddable;
+        embedPlaceholder.hidden = isEmbeddable;
+
+        if (isEmbeddable) {
+          frame.src = appUrl;
+        } else {
+          frame.src = 'about:blank';
+          placeholderTitle.textContent = `${appTitle} opens in a new tab`;
+          placeholderLink.href = appUrl;
+        }
+
+        frame.title = appTitle;
+        document.title = `${appTitle} | JP's Toolkit`;
+
+        if (updateHistory) {
+          const url = new URL(window.location.href);
+          url.searchParams.set('app', selectedLink.dataset.app);
+          window.history.pushState({ app: selectedLink.dataset.app }, '', url);
+        }
+
+        if (mobileMedia.matches) {
+          setSidebarCollapsed(true);
+        }
+      }
+
+      appLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          loadApp(link.dataset.app, true);
+        });
+      });
+
+      sidebarToggle.addEventListener('click', () => setSidebarCollapsed(!viewer.classList.contains('sidebar-collapsed')));
+      mobileToggle.addEventListener('click', () => setSidebarCollapsed(false));
+      overlay.addEventListener('click', () => setSidebarCollapsed(true));
+      window.addEventListener('popstate', () => loadApp(new URLSearchParams(window.location.search).get('app')));
+
+      setSidebarCollapsed(mobileMedia.matches);
+      loadApp(new URLSearchParams(window.location.search).get('app'));
+    })();
+  </script>
+</body>
+
+</html>
