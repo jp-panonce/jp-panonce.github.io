@@ -1485,11 +1485,52 @@ body.hero-transitioning .hero + .section {
 # Services Section
 --------------------------------------------------------------*/
 .services .service-item {
+  --service-accent: var(--accent-color);
   position: relative;
+  padding: 16px;
+  border-radius: 8px;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.services .service-item:hover {
+  background-color: color-mix(in srgb, var(--service-accent), transparent 92%);
+  transform: translateY(-2px);
+}
+
+.services .service-app-development {
+  --service-accent: #38bdf8;
+}
+
+.services .service-ui-design {
+  --service-accent: #f472b6;
+}
+
+.services .service-automation {
+  --service-accent: #f59e0b;
+}
+
+.services .service-software-qa {
+  --service-accent: #34d399;
+}
+
+.services .service-bi-analytics {
+  --service-accent: #a78bfa;
+}
+
+.services .service-project-management {
+  --service-accent: #fb7185;
+}
+
+.services .service-devops {
+  --service-accent: #f97316;
+}
+
+.services .service-data-engineering {
+  --service-accent: #2dd4bf;
 }
 
 .services .service-item .icon {
-  background: var(--accent-color);
+  background: var(--service-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1497,7 +1538,7 @@ body.hero-transitioning .hero + .section {
   height: 54px;
   border-radius: 50%;
   transition: 0.5s;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--service-accent);
   margin-right: 20px;
 }
 
@@ -1512,7 +1553,7 @@ body.hero-transitioning .hero + .section {
 }
 
 .services .service-item:hover .icon i {
-  color: var(--accent-color);
+  color: var(--service-accent);
 }
 
 .services .service-item .title {
@@ -1523,10 +1564,14 @@ body.hero-transitioning .hero + .section {
 
 .services .service-item .title a {
   color: var(--heading-color);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--service-accent), transparent 30%);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
 }
 
 .services .service-item .title a:hover {
-  color: var(--accent-color);
+  color: var(--service-accent);
 }
 
 .services .service-item .description {
@@ -1608,6 +1653,7 @@ body.hero-transitioning .hero + .section {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .services .service-item,
   .hover-skill-badge,
   .hover-skill-badge-label {
     transition: none;
@@ -1883,9 +1929,51 @@ body.hero-transitioning .hero + .section {
 /*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
+.service-app-development-page {
+  --service-accent: #38bdf8;
+}
+
+.service-ui-design-page {
+  --service-accent: #f472b6;
+}
+
+.service-automation-page {
+  --service-accent: #f59e0b;
+}
+
+.service-software-qa-page {
+  --service-accent: #34d399;
+}
+
+.service-bi-analytics-page {
+  --service-accent: #a78bfa;
+}
+
+.service-project-management-page {
+  --service-accent: #fb7185;
+}
+
+.service-devops-page {
+  --service-accent: #f97316;
+}
+
+.service-data-engineering-page {
+  --service-accent: #2dd4bf;
+}
+
+.service-details-page {
+  overflow-x: clip;
+}
+
+.service-details-page .service-details {
+  --accent-color: var(--service-accent);
+}
+
 .service-details .services-list {
-  padding: 10px 30px;
+  padding: 10px 24px;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface-color), transparent 25%);
   margin-bottom: 20px;
 }
 
@@ -1903,11 +1991,161 @@ body.hero-transitioning .hero + .section {
 .service-details .services-list a.active {
   color: var(--heading-color);
   font-weight: 700;
-  border-color: var(--accent-color);
+  border-color: var(--service-accent, var(--accent-color));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--service-accent, var(--accent-color)), transparent 88%), transparent);
 }
 
 .service-details .services-list a:hover {
-  border-color: var(--accent-color);
+  border-color: var(--service-accent, var(--accent-color));
+  color: var(--heading-color);
+}
+
+.service-detail-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.service-detail-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--service-accent, var(--accent-color));
+  border-radius: 50%;
+  background: var(--service-accent, var(--accent-color));
+  color: #07111f;
+  font-size: 28px;
+}
+
+.service-detail-heading h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.service-detail-eyebrow {
+  margin: 0 0 4px;
+  color: var(--service-accent, var(--accent-color));
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.service-detail-lead {
+  max-width: 760px;
+  font-size: 18px !important;
+  line-height: 1.7;
+}
+
+.service-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px 0 38px;
+}
+
+.service-highlight {
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--service-accent, var(--accent-color)), transparent 72%);
+  border-left: 4px solid var(--service-accent, var(--accent-color));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--service-accent, var(--accent-color)), transparent 94%);
+}
+
+.service-highlight i {
+  color: var(--service-accent, var(--accent-color));
+  font-size: 22px;
+}
+
+.service-highlight h3 {
+  margin: 10px 0 6px;
+  font-size: 17px;
+}
+
+.service-highlight p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.service-toolkit {
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--service-accent, var(--accent-color)), transparent 75%);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--service-accent, var(--accent-color)), transparent 95%);
+}
+
+.service-toolkit h3 {
+  margin: 0 0 18px;
+  font-size: 20px;
+}
+
+.service-skill-group + .service-skill-group {
+  margin-top: 18px;
+}
+
+.service-skill-group h4 {
+  margin-bottom: 9px;
+  color: color-mix(in srgb, var(--default-color), transparent 18%);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.service-skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.service-skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 82%);
+  border-radius: 6px;
+  background: var(--surface-color);
+  color: var(--default-color);
+  font-size: 12px;
+}
+
+.service-skill-badge img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.service-capability-list li {
+  align-items: flex-start !important;
+  padding: 8px 0 !important;
+}
+
+.service-capability-list i {
+  flex: 0 0 auto;
+  color: var(--service-accent, var(--accent-color)) !important;
+}
+
+.service-method {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.service-method strong {
+  color: var(--service-accent, var(--accent-color));
+}
+
+@media (max-width: 767px) {
+  .service-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .service-detail-heading {
+    align-items: flex-start;
+  }
 }
 
 .service-details .services-img {
@@ -1943,7 +2181,7 @@ body.hero-transitioning .hero + .section {
 .service-details ul i {
   font-size: 20px;
   margin-right: 8px;
-  color: var(--accent-color);
+  color: var(--service-accent, var(--accent-color));
 }
 
 /*--------------------------------------------------------------
