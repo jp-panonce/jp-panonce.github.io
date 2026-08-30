@@ -1329,7 +1329,8 @@ body.hero-transitioning .hero + .section {
   letter-spacing: 0.02em;
 }
 
-.blogpost-toc-link {
+.blogpost-toc-link,
+.blogpost-toc-panel .nav-link {
   color: #6e7f79;
   background-color: transparent !important;
   border-left: 2px solid transparent;
@@ -1338,14 +1339,23 @@ body.hero-transitioning .hero + .section {
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.blogpost-toc-link:hover {
+.blogpost-toc-link:hover,
+.blogpost-toc-panel .nav-link:hover {
   color: #566761;
 }
 
-.blogpost-toc-link.active {
+.nav-pills .blogpost-toc-link.active,
+.blogpost-toc-panel .nav-pills .nav-link.active {
   color: #4c5d57;
+  background-color: transparent !important;
   border-left-color: #9caea8;
   font-weight: 500;
+}
+
+[data-theme="dark"] .nav-pills .blogpost-toc-link.active,
+[data-theme="dark"] .blogpost-toc-panel .nav-pills .nav-link.active {
+  color: #f8fafc;
+  border-left-color: #94a3b8;
 }
 
 .blogpost-article {
@@ -1428,9 +1438,10 @@ body.hero-transitioning .hero + .section {
 .thoughts-section .timeline-year::after {
   content: "";
   flex: 1;
-  height: 1px;
+  min-width: 24px;
+  height: 2px;
   margin-left: 10px;
-  background: color-mix(in srgb, var(--default-color), transparent 65%);
+  background: color-mix(in srgb, var(--default-color), transparent 55%);
 }
 
 .thoughts-section .timeline-posts {

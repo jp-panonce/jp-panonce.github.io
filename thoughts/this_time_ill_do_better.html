@@ -144,40 +144,6 @@
         </div>
       </div>
 
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          var sections = Array.from(document.querySelectorAll('.blogpost-section-anchor'));
-          var tocLinks = Array.from(document.querySelectorAll('#blogpost-nav .blogpost-toc-link'));
-
-          function setActiveLink(activeId) {
-            tocLinks.forEach(function (link) {
-              if (link.getAttribute('href') === '#' + activeId) {
-                link.classList.add('active');
-              } else {
-                link.classList.remove('active');
-              }
-            });
-          }
-
-          function updateActiveHeading() {
-            var scrollPosition = window.scrollY + 180;
-            var currentId = sections.length ? sections[0].id : '';
-
-            sections.forEach(function (section) {
-              if (section.offsetTop <= scrollPosition) {
-                currentId = section.id;
-              }
-            });
-
-            if (currentId) {
-              setActiveLink(currentId);
-            }
-          }
-
-          window.addEventListener('scroll', updateActiveHeading, { passive: true });
-          updateActiveHeading();
-        });
-      </script>
     </section>
 
     <section id="thoughts" class="section thoughts-section ">
@@ -192,8 +158,8 @@
           <div class="timeline-year-group">
             <div class="timeline-year"><span>2026</span></div>
             <div class="timeline-posts">
-              <a href="#" class="timeline-post-link">AI is scary..</a>
-              <a href="#" class="timeline-post-link">i'm so behind...</a>
+              <a href="ai_is_scary.html" class="timeline-post-link">AI is scary..</a>
+              <a href="im_so_behind.html" class="timeline-post-link">i'm so behind...</a>
             </div>
           </div>
           
@@ -201,21 +167,21 @@
           <div class="timeline-year-group">
             <div class="timeline-year"><span>2024</span></div>
             <div class="timeline-posts">
-              <a href="#" class="timeline-post-link">the cutest queen 💕</a>
+              <a href="the_cutest_queen.html" class="timeline-post-link">the cutest queen 💕</a>
             </div>
           </div>
           
           <div class="timeline-year-group">
             <div class="timeline-year"><span>2022</span></div>
             <div class="timeline-posts">
-              <a href="#" class="timeline-post-link">on my own..</a>
+              <a href="on_my_own.html" class="timeline-post-link">on my own..</a>
             </div>
           </div>
 
           <div class="timeline-year-group">
             <div class="timeline-year"><span>2020</span></div>
             <div class="timeline-posts">
-              <a href="#" class="timeline-post-link">Stuck at home..</a>
+              <a href="stuck_at_home.html" class="timeline-post-link">Stuck at home..</a>
               <a href="covid_and_first_corporate_job.html" class="timeline-post-link">my first corporate job aaaaaand... covid happened</a>
             </div>
           </div>
@@ -273,19 +239,19 @@
               <div class="browse-links">
                 <h4 class="footer-subsection-title">EXPLORE THE SITE</h4>
                 <ul>
-                  <li><a href="blog-home.html">Blog</a></li>
-                  <li><a href="portfolio-details.html">Creations</a></li>
-                  <li><a href="tools.html">Tools</a></li>
-                  <li><a href="about-me.html">About Me</a></li>
+                  <li><a href="../blog-home.html">Blog</a></li>
+                  <li><a href="../portfolio-details.html">Creations</a></li>
+                  <li><a href="../tools.html">Tools</a></li>
+                  <li><a href="../about-me.html">About Me</a></li>
                 </ul>
               </div>
 
               <div class="browse-links">
                 <h4 class="footer-subsection-title">GENERAL</h4>
                 <ul>
-                  <li><a href="about-me.html">About Me</a></li>
+                  <li><a href="../about-me.html">About Me</a></li>
                   <li><a href="#">About the site</a></li>
-                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="../contact.html">Contact</a></li>
                 </ul>
               </div>
 
@@ -359,6 +325,7 @@
 
   <!-- Main JS File -->
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/blog-post.js"></script>
 
 </body>
 
