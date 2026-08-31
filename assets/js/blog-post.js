@@ -1,37 +1,54 @@
 document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop();
-  const timeline = [
-    ['2026', [['ai_is_scary.html', 'AI is scary..'], ['im_so_behind.html', "i'm so behind..."]]],
-    ['2024', [['the_cutest_queen.html', 'the cutest queen 💕']]],
-    ['2022', [['on_my_own.html', 'on my own..']]],
-    ['2020', [['stuck_at_home.html', 'Stuck at home..'], ['covid_and_first_corporate_job.html', 'my first corporate job aaaaaand... covid happened']]],
-    ['2014', [['this_time_ill_do_better.html', "this time, i'll do better"]]]
-  ];
-
   const thoughtsSection = document.querySelector('.thoughts-section');
   if (thoughtsSection) {
     thoughtsSection.id = 'thoughts';
-    thoughtsSection.innerHTML = `
-      <div class="container section-title" data-aos="fade-up">
-        <h3>other thoughts</h3>
-      </div>
-      <div class="container" data-aos="fade-up" data-aos-delay="80">
-        <div class="thoughts-timeline">
-          ${timeline.map(function ([year, posts]) {
-            return `
-              <div class="timeline-year-group">
-                <div class="timeline-year"><span>${year}</span></div>
-                <div class="timeline-posts">
-                  ${posts.map(function ([href, label]) {
-                    const destination = href === currentPage ? '#' : href;
-                    return `<a href="${destination}" class="timeline-post-link">${label}</a>`;
-                  }).join('')}
-                </div>
-              </div>`;
-          }).join('')}
-          <br>
-        </div>
-      </div>`;
+    fetch('../blog-home.html')
+      .then(function (response) {
+        if (!response.ok) throw new Error('Could not load blog-home.html');
+        return response.text();
+      })
+      .then(function (html) {
+        const sourceDocument = new DOMParser().parseFromString(html, 'text/html');
+        const sourceTimeline = sourceDocument.querySelector('#thoughts .thoughts-timeline');
+        if (!sourceTimeline) throw new Error('Could not find the Thoughts timeline');
+
+        const timeline = Array.from(sourceTimeline.querySelectorAll('.timeline-year-group')).map(function (group) {
+          const year = group.querySelector('.timeline-year').textContent.trim();
+          const posts = Array.from(group.querySelectorAll('.timeline-post-link')).map(function (link) {
+            const href = new URL(link.getAttribute('href'), new URL('../blog-home.html', window.location.href));
+            return [href.pathname.split('/').pop(), link.textContent.trim()];
+          });
+          return [year, posts];
+        });
+
+        thoughtsSection.innerHTML = `
+          <div class="container section-title" data-aos="fade-up">
+            <h3>other thoughts</h3>
+          </div>
+          <div class="container" data-aos="fade-up" data-aos-delay="80">
+            <div class="thoughts-timeline">
+              ${timeline.map(function ([year, posts]) {
+                return `
+                  <div class="timeline-year-group">
+                    <div class="timeline-year"><span>${year}</span></div>
+                    <div class="timeline-posts">
+                      ${posts.map(function ([href, label]) {
+                        const destination = href === currentPage ? '#' : href;
+                        return `<a href="${destination}" class="timeline-post-link">${label}</a>`;
+                      }).join('')}
+                    </div>
+                  </div>`;
+              }).join('')}
+              <br>
+            </div>
+          </div>`;
+
+        if (window.AOS) window.AOS.refreshHard();
+      })
+      .catch(function (error) {
+        console.error('Could not render other thoughts:', error);
+      });
   }
 
   const footer = document.querySelector('.site-cloud-footer');
