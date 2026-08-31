@@ -284,7 +284,7 @@
       min-height: 44px;
       align-items: center;
       gap: 12px;
-      padding: 9px 72px 9px 12px;
+      padding: 9px 12px;
       border-radius: 6px;
       color: #bac7d8;
       font-family: var(--nav-font);
@@ -300,28 +300,59 @@
       text-align: center;
     }
 
-    .tool-nav .tool-app-link:hover,
-    .tool-nav .tool-app-link.active {
+    .tool-nav .tool-app-link .tool-status-icon {
+      width: auto;
+      flex: 0 0 auto;
+      margin-left: -6px;
+      color: #fbbf24;
+      font-size: 12px;
+    }
+
+    .tool-nav .tool-app-link:hover {
       background: #162536;
       color: #ffffff;
     }
 
+    .tool-nav-item.is-selected {
+      border-radius: 6px;
+      background: #162536;
+    }
+
+    .tool-nav-item.is-selected .tool-app-link {
+      color: #ffffff;
+    }
+
+    .tool-nav-detail {
+      display: none;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 6px;
+      padding: 0 7px 9px 46px;
+    }
+
+    .tool-nav-item.is-selected .tool-nav-detail {
+      display: grid;
+    }
+
+    .tool-nav-description {
+      margin: 0;
+      color: #8fa2b8;
+      font-family: var(--nav-font);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
     .tool-nav-actions {
-      position: absolute;
-      top: 50%;
-      right: 5px;
       display: flex;
-      gap: 2px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-50%);
+      flex: 0 0 auto;
+      gap: 1px;
     }
 
     .tool-nav-action {
       display: inline-grid;
-      width: 30px;
-      height: 30px;
-      flex: 0 0 30px;
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
       place-items: center;
       border-radius: 5px;
       color: #bac7d8;
@@ -329,13 +360,6 @@
 
     .tool-nav-action i {
       font-size: 14px;
-    }
-
-    .tool-nav-item:hover .tool-nav-actions,
-    .tool-nav-item:focus-within .tool-nav-actions,
-    .tool-app-link.active + .tool-nav-actions {
-      opacity: 1;
-      pointer-events: auto;
     }
 
     .tool-nav-action:hover,
@@ -367,6 +391,10 @@
     }
 
     .sidebar-collapsed .tool-nav-actions {
+      display: none;
+    }
+
+    .sidebar-collapsed .tool-nav-item.is-selected .tool-nav-detail {
       display: none;
     }
 
@@ -451,7 +479,8 @@
       transform-origin: top left;
     }
 
-    .tool-embed-placeholder {
+    .tool-embed-placeholder,
+    .tool-construction-placeholder {
       position: absolute;
       inset: 0;
       box-sizing: border-box;
@@ -464,8 +493,21 @@
     }
 
     .tool-embed-placeholder[hidden],
+    .tool-construction-placeholder[hidden],
     .tool-frame[hidden] {
       display: none;
+    }
+
+    .tool-construction-icon {
+      display: inline-grid;
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+      place-items: center;
+      border-radius: 50%;
+      background: color-mix(in srgb, #fbbf24, transparent 84%);
+      color: #b77900;
+      font-size: 30px;
     }
 
     .tool-placeholder-content {
@@ -551,31 +593,11 @@
         min-height: 44px;
         align-items: center;
         justify-content: flex-start;
-        padding: 9px 72px 9px 12px;
+        padding: 9px 12px;
       }
 
-      .sidebar-collapsed .tool-nav-actions {
-        display: flex;
-        top: 50%;
-        right: 7px;
-        bottom: auto;
-        left: auto;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-50%);
-      }
-
-      .sidebar-collapsed .tool-nav-item:hover .tool-nav-actions,
-      .sidebar-collapsed .tool-nav-item:focus-within .tool-nav-actions,
-      .sidebar-collapsed .tool-app-link.active + .tool-nav-actions {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .sidebar-collapsed .tool-nav-action {
-        width: 30px;
-        height: 30px;
-        flex-basis: 30px;
+      .tool-viewer:not(.sidebar-collapsed) .tool-nav-item.is-selected .tool-nav-detail {
+        display: grid;
       }
 
       .tool-mobile-toggle {
@@ -623,21 +645,21 @@
 
         <div class="tool-nav-group tools">
           <h2>Tools</h2>
-          <a href="tool-viewer.html?app=randomizer" data-app="randomizer" data-url="pages/randomizer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/randomizer.html" data-title="Randomizer"><i class="bi bi-shuffle"></i><span>Randomizer</span></a>
-          <a href="tool-viewer.html?app=metronome" data-app="metronome" data-url="pages/metronome.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/metronome.html" data-title="Metronome"><i class="bi bi-music-note-beamed"></i><span>Metronome</span></a>
-          <a href="tool-viewer.html?app=color-picker" data-app="color-picker" data-url="pages/color_picker.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/color_picker.html" data-title="Color Picker"><i class="bi bi-eyedropper"></i><span>Color Picker</span></a>
-          <a href="tool-viewer.html?app=meditate" data-app="meditate" data-url="pages/meditate.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/meditate.html" data-title="Meditate"><i class="bi bi-wind"></i><span>Meditate</span></a>
-          <a href="tool-viewer.html?app=calculator" data-app="calculator" data-url="pages/calculator.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/calculator.html" data-title="Calculator"><i class="bi bi-calculator"></i><span>Calculator</span></a>
-          <a href="tool-viewer.html?app=chemical-equation-balancer" data-app="chemical-equation-balancer" data-url="pages/chemical_equation_balancer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/chemical_equation_balancer.html" data-title="Chemical Equation Balancer"><i class="bi bi-hexagon"></i><span>Chemical Equation Balancer</span></a>
+          <a href="tool-viewer.html?app=randomizer" data-app="randomizer" data-url="pages/randomizer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/randomizer.html" data-title="Randomizer" data-under-construction="true"><i class="bi bi-shuffle"></i><span>Randomizer</span></a>
+          <a href="tool-viewer.html?app=metronome" data-app="metronome" data-url="pages/metronome.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/metronome.html" data-title="Metronome" data-under-construction="true"><i class="bi bi-music-note-beamed"></i><span>Metronome</span></a>
+          <a href="tool-viewer.html?app=color-picker" data-app="color-picker" data-url="pages/color_picker.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/color_picker.html" data-title="Color Picker" data-under-construction="true"><i class="bi bi-eyedropper"></i><span>Color Picker</span></a>
+          <a href="tool-viewer.html?app=meditate" data-app="meditate" data-url="pages/meditate.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/meditate.html" data-title="Meditate" data-under-construction="true"><i class="bi bi-wind"></i><span>Meditate</span></a>
+          <a href="tool-viewer.html?app=calculator" data-app="calculator" data-url="pages/calculator.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/calculator.html" data-title="Calculator" data-under-construction="true"><i class="bi bi-calculator"></i><span>Calculator</span></a>
+          <a href="tool-viewer.html?app=chemical-equation-balancer" data-app="chemical-equation-balancer" data-url="pages/chemical_equation_balancer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/chemical_equation_balancer.html" data-title="Chemical Equation Balancer" data-under-construction="true"><i class="bi bi-hexagon"></i><span>Chemical Equation Balancer</span></a>
         </div>
 
         <div class="tool-nav-group learning">
           <h2>Learning</h2>
           <a href="tool-viewer.html?app=periodic-table" data-app="periodic-table" data-url="https://jp-panonce.github.io/periodic_table_js/" data-source="https://github.com/jp-panonce/periodic_table_js" data-title="Periodic Table"><i class="bi bi-table"></i><span>Periodic Table</span></a>
           <a href="tool-viewer.html?app=trigo-functions" data-app="trigo-functions" data-url="https://www.khanacademy.org/computer-programming/trigo-functions-made-easier/5863476127" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/trigo_functions_visualized.html" data-title="Trigo Functions Visualized" data-embeddable="false"><i class="bi bi-graph-up"></i><span>Trigo Functions Visualized</span></a>
-          <a href="tool-viewer.html?app=ece-board-exam" data-app="ece-board-exam" data-url="https://ece-boards-ph-practiceapp.streamlit.app/" data-source="https://github.com/jp-panonce/ECE-Boards-Practice_st" data-title="ECE Board Exam Assistant" data-embeddable="false"><i class="bi bi-mortarboard"></i><span>ECE Board Exam Assistant</span></a>
-          <a href="tool-viewer.html?app=fun-with-flags" data-app="fun-with-flags" data-url="pages/fun_with_flags.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/fun_with_flags.html" data-title="Fun with Flags!"><i class="bi bi-flag"></i><span>Fun with Flags!</span></a>
-          <a href="tool-viewer.html?app=quiz-it" data-app="quiz-it" data-url="pages/quiz_it.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/quiz_it.html" data-title="Quiz it!"><i class="bi bi-patch-question"></i><span>Quiz it!</span></a>
+          <a href="tool-viewer.html?app=ece-board-exam" data-app="ece-board-exam" data-url="https://ece-boards-ph-practiceapp.streamlit.app/" data-source="https://github.com/jp-panonce/ECE-Boards-Practice_st" data-title="ECE Board Exam Assistant" data-embeddable="true"><i class="bi bi-mortarboard"></i><span>ECE Board Exam Assistant</span></a>
+          <a href="tool-viewer.html?app=fun-with-flags" data-app="fun-with-flags" data-url="pages/fun_with_flags.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/fun_with_flags.html" data-title="Fun with Flags!" data-under-construction="true"><i class="bi bi-flag"></i><span>Fun with Flags!</span></a>
+          <a href="tool-viewer.html?app=quiz-it" data-app="quiz-it" data-url="pages/quiz_it.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/quiz_it.html" data-title="Quiz it!" data-under-construction="true"><i class="bi bi-patch-question"></i><span>Quiz it!</span></a>
         </div>
 
         <div class="tool-nav-group dashboards">
@@ -679,6 +701,13 @@
           </a>
         </div>
       </section>
+      <section class="tool-construction-placeholder" id="tool-construction-placeholder" hidden>
+        <div class="tool-placeholder-content">
+          <span class="tool-construction-icon" aria-hidden="true"><i class="bi bi-cone-striped"></i></span>
+          <h2 id="tool-construction-title">Under construction</h2>
+          <p>This tool is still being built.<br>Please check back later.</p>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -692,6 +721,8 @@
       const frameStage = document.getElementById('tool-frame-stage');
       const frame = document.getElementById('tool-frame');
       const embedPlaceholder = document.getElementById('tool-embed-placeholder');
+      const constructionPlaceholder = document.getElementById('tool-construction-placeholder');
+      const constructionTitle = document.getElementById('tool-construction-title');
       const placeholderTitle = document.getElementById('tool-placeholder-title');
       const placeholderLink = document.getElementById('tool-placeholder-link');
       const sidebarToggle = document.getElementById('sidebar-toggle');
@@ -702,6 +733,25 @@
       const searchEmpty = document.getElementById('tool-search-empty');
       const appLinks = [...document.querySelectorAll('[data-app]')];
       const mobileMedia = window.matchMedia('(max-width: 767px)');
+      const appDescriptions = {
+        'mempi': 'How many digits of pi can you recall?',
+        'guess-the-rgb': 'Got an eye for colors? Try guessing it\'s RGB value',
+        'randomizer': 'Your customizable randomizer',
+        'metronome': 'Keep in tempo with a simple metronome',
+        'color-picker': 'Pick colors for your development needs',
+        'meditate': 'Relax and take a breath',
+        'calculator': 'A large set of calculation tools',
+        'chemical-equation-balancer': 'Balance chemical equations step by step.',
+        'periodic-table': 'Explore elements and their key properties.',
+        'trigo-functions': 'Visualize core trigonometric functions.',
+        'ece-board-exam': 'Practice for the Philippine ECE boards.',
+        'fun-with-flags': 'Learn and identify flags from around the world.',
+        'quiz-it': 'Create quick quizzes from study material.',
+        'crayola-colors': 'Explore the history of Crayola colors.',
+        'nw-pacific-typhoons': 'Analyze typhoon patterns in the NW Pacific.',
+        'locked-up': 'Compare incarceration across countries.',
+        'philippine-climate': 'Explore Philippine climate patterns and trends.'
+      };
       let scrollGuideTimer;
 
       function updateScrollGuide() {
@@ -760,15 +810,27 @@
 
       appLinks.forEach((link) => {
         const item = document.createElement('div');
+        const detail = document.createElement('div');
+        const description = document.createElement('p');
         const actions = document.createElement('div');
         const externalLink = document.createElement('a');
         const sourceLink = document.createElement('a');
 
         item.className = 'tool-nav-item';
         link.classList.add('tool-app-link');
+        if (link.dataset.underConstruction === 'true') {
+          const statusIcon = document.createElement('i');
+          statusIcon.className = 'bi bi-cone-striped tool-status-icon';
+          statusIcon.title = 'Under construction';
+          statusIcon.setAttribute('aria-label', 'Under construction');
+          link.appendChild(statusIcon);
+        }
         link.before(item);
         item.appendChild(link);
 
+        detail.className = 'tool-nav-detail';
+        description.className = 'tool-nav-description';
+        description.textContent = appDescriptions[link.dataset.app];
         actions.className = 'tool-nav-actions';
         externalLink.className = 'tool-nav-action';
         externalLink.href = link.dataset.external || link.dataset.url;
@@ -778,9 +840,11 @@
         externalLink.setAttribute('aria-label', externalLink.title);
         externalLink.innerHTML = '<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>';
 
-        actions.append(externalLink);
+        if (link.dataset.underConstruction !== 'true') {
+          actions.append(externalLink);
+        }
 
-        if (link.dataset.source) {
+        if (link.dataset.source && link.dataset.underConstruction !== 'true') {
           sourceLink.className = 'tool-nav-action';
           sourceLink.href = link.dataset.source;
           sourceLink.target = '_blank';
@@ -791,7 +855,11 @@
           actions.append(sourceLink);
         }
 
-        item.appendChild(actions);
+        detail.appendChild(description);
+        if (actions.childElementCount) {
+          detail.appendChild(actions);
+        }
+        item.appendChild(detail);
       });
 
       function normalizeSearchText(value) {
@@ -858,10 +926,12 @@
         const externalUrl = selectedLink.dataset.external || appUrl;
         const appTitle = selectedLink.dataset.title;
         const isDashboard = selectedLink.closest('.tool-nav-group')?.classList.contains('dashboards');
+        const isUnderConstruction = selectedLink.dataset.underConstruction === 'true';
 
         appLinks.forEach((link) => {
           const isActive = link === selectedLink;
           link.classList.toggle('active', isActive);
+          link.parentElement.classList.toggle('is-selected', isActive);
           if (isActive) {
             link.setAttribute('aria-current', 'page');
           } else {
@@ -872,10 +942,14 @@
         const isEmbeddable = selectedLink.dataset.embeddable !== 'false';
         viewerContent.classList.toggle('dashboard-view', isDashboard);
         requestAnimationFrame(sizeDashboardFrame);
-        frame.hidden = !isEmbeddable;
-        embedPlaceholder.hidden = isEmbeddable;
+        frame.hidden = !isEmbeddable || isUnderConstruction;
+        embedPlaceholder.hidden = isEmbeddable || isUnderConstruction;
+        constructionPlaceholder.hidden = !isUnderConstruction;
 
-        if (isEmbeddable) {
+        if (isUnderConstruction) {
+          frame.src = 'about:blank';
+          constructionTitle.textContent = `${appTitle} is under construction`;
+        } else if (isEmbeddable) {
           frame.src = appUrl;
         } else {
           frame.src = 'about:blank';
