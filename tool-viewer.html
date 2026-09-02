@@ -648,17 +648,18 @@
         </div>
 
         <div class="tool-nav-group tools">
-          <h2>Tools</h2>
+          <h2>Tools</h2> 
           <a href="tool-viewer.html?app=randomizer" data-app="randomizer" data-url="pages/randomizer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/randomizer.html" data-title="Randomizer" data-under-construction="true"><i class="bi bi-shuffle"></i><span>Randomizer</span></a>
-          <a href="tool-viewer.html?app=metronome" data-app="metronome" data-url="pages/metronome.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/metronome.html" data-title="Metronome" data-under-construction="true"><i class="bi bi-music-note-beamed"></i><span>Metronome</span></a>
+          <a href="tool-viewer.html?app=metronome" data-app="metronome" data-url="https://jp-panonce.github.io/OnePageHTMLs/metronome.html" data-source="https://github.com/jp-panonce/OnePageHTMLs/blob/main/metronome.html" data-title="Metronome" data-under-construction="false"><i class="bi bi-music-note-beamed"></i><span>Metronome</span></a>
           <a href="tool-viewer.html?app=color-picker" data-app="color-picker" data-url="pages/color_picker.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/color_picker.html" data-title="Color Picker" data-under-construction="true"><i class="bi bi-eyedropper"></i><span>Color Picker</span></a>
           <a href="tool-viewer.html?app=meditate" data-app="meditate" data-url="pages/meditate.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/meditate.html" data-title="Meditate" data-under-construction="true"><i class="bi bi-wind"></i><span>Meditate</span></a>
           <a href="tool-viewer.html?app=calculator" data-app="calculator" data-url="pages/calculator.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/calculator.html" data-title="Calculator" data-under-construction="true"><i class="bi bi-calculator"></i><span>Calculator</span></a>
-          <a href="tool-viewer.html?app=chemical-equation-balancer" data-app="chemical-equation-balancer" data-url="pages/chemical_equation_balancer.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/chemical_equation_balancer.html" data-title="Chemical Equation Balancer" data-under-construction="true"><i class="bi bi-hexagon"></i><span>Chemical Equation Balancer</span></a>
+          <a href="tool-viewer.html?app=chemical-equation-balancer" data-app="chemical-equation-balancer" data-url="https://jp-panonce.github.io/OnePageHTMLs/chem-equation-balancer.html" data-source="https://github.com/jp-panonce/OnePageHTMLs/blob/main/chem-equation-balancer.html" data-title="Chemical Equation Balancer" data-under-construction="false"><i class="bi bi-hexagon"></i><span>Chemical Equation Balancer</span></a>
         </div>
 
         <div class="tool-nav-group learning">
           <h2>Learning</h2>
+          <a href="tool-viewer.html?app=morse-branch" data-app="morse-branch" data-url="https://jp-panonce.github.io/OnePageHTMLs/morse_code_practice_tool.html" data-source="https://github.com/jp-panonce/OnePageHTMLs/blob/main/morse_code_practice_tool.html" data-title="Morse Branch"><i class="bi bi-table"></i><span>Morse Branch</span></a>
           <a href="tool-viewer.html?app=periodic-table" data-app="periodic-table" data-url="https://jp-panonce.github.io/periodic_table_js/" data-source="https://github.com/jp-panonce/periodic_table_js" data-title="Periodic Table"><i class="bi bi-table"></i><span>Periodic Table</span></a>
           <a href="tool-viewer.html?app=trigo-functions" data-app="trigo-functions" data-url="https://www.khanacademy.org/computer-programming/trigo-functions-made-easier/5863476127" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/trigo_functions_visualized.html" data-title="Trigo Functions Visualized" data-embeddable="false"><i class="bi bi-graph-up"></i><span>Trigo Functions Visualized</span></a>
           <a href="tool-viewer.html?app=ece-board-exam" data-app="ece-board-exam" data-url="https://ece-boards-ph-practiceapp.streamlit.app/?embed=true" data-external="https://ece-boards-ph-practiceapp.streamlit.app/" data-source="https://github.com/jp-panonce/ECE-Boards-Practice_st" data-title="ECE Board Exam Assistant"><i class="bi bi-mortarboard"></i><span>ECE Board Exam Assistant</span></a>
@@ -738,6 +739,7 @@
       const appLinks = [...document.querySelectorAll('[data-app]')];
       const mobileMedia = window.matchMedia('(max-width: 767px)');
       const appDescriptions = {
+        'morse-branch': 'Learn and Practice your Morse Code skills.',
         'mempi': 'How many digits of pi can you recall?',
         'guess-the-rgb': 'Got an eye for colors? Try guessing it\'s RGB value',
         'randomizer': 'Your customizable randomizer',
@@ -745,7 +747,7 @@
         'color-picker': 'Pick colors for your development needs',
         'meditate': 'Relax and take a breath',
         'calculator': 'A large set of calculation tools',
-        'chemical-equation-balancer': 'Balance chemical equations step by step.',
+        'chemical-equation-balancer': 'Balance chemical equations and learn more.',
         'periodic-table': 'Explore elements and their key properties.',
         'trigo-functions': 'Visualize core trigonometric functions.',
         'ece-board-exam': 'Practice for the Philippine ECE boards.',
