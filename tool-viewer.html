@@ -279,6 +279,7 @@
     }
 
     .tool-nav .tool-app-link {
+      position: relative;
       box-sizing: border-box;
       display: flex;
       min-height: 44px;
@@ -298,6 +299,29 @@
       color: var(--category-color);
       font-size: 18px;
       text-align: center;
+    }
+
+    .tool-nav-external-indicator {
+      position: absolute;
+      top: 11px;
+      right: 13px;
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border: 0;
+      border-radius: 50%;
+      background: #9aa4af;
+      color: transparent;
+      font-size: 0;
+      line-height: 0;
+      pointer-events: none;
+      opacity: 0.9;
+      box-shadow: none;
+      transform: translate(0, 0);
+    }
+
+    .tool-nav-external-indicator i {
+      display: none;
     }
 
     .tool-nav .tool-app-link .tool-status-icon {
@@ -655,8 +679,9 @@
           <a href="tool-viewer.html?app=meditate" data-app="meditate" data-url="pages/meditate.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/meditate.html" data-title="Meditate" data-under-construction="true"><i class="bi bi-wind"></i><span>Meditate</span></a>
           <a href="tool-viewer.html?app=calculator" data-app="calculator" data-url="pages/calculator.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/calculator.html" data-title="Calculator" data-under-construction="true"><i class="bi bi-calculator"></i><span>Calculator</span></a>
           <a href="tool-viewer.html?app=chemical-equation-balancer" data-app="chemical-equation-balancer" data-url="https://jp-panonce.github.io/OnePageHTMLs/chem-equation-balancer.html" data-source="https://github.com/jp-panonce/OnePageHTMLs/blob/main/chem-equation-balancer.html" data-title="Chemical Equation Balancer" data-under-construction="false"><i class="bi bi-hexagon"></i><span>Chemical Equation Balancer</span></a>
+          <a href="https://jp-panonce.github.io/OnePageHTMLs/seeds.html" data-app="seeds" data-url="https://jp-panonce.github.io/OnePageHTMLs/seeds.html" data-source="https://github.com/jp-panonce/OnePageHTMLs/blob/main/seeds.html" data-title="Seeds" data-under-construction="false"><i class="bi bi-flower1"></i><span>Seeds</span></a>
         </div>
-
+        
         <div class="tool-nav-group learning">
           <h2>Learning</h2>
           <a href="tool-viewer.html?app=morse-branch" data-app="morse-branch" data-url="https://jp-panonce.github.io/OnePageHTMLs/morse_code_practice_tool.html" data-source="https://github.com/jp-panonce/OnePageHTMLs/blob/main/morse_code_practice_tool.html" data-title="Morse Branch"><i class="bi bi-table"></i><span>Morse Branch</span></a>
@@ -665,6 +690,7 @@
           <a href="tool-viewer.html?app=ece-board-exam" data-app="ece-board-exam" data-url="https://ece-boards-ph-practiceapp.streamlit.app/?embed=true" data-external="https://ece-boards-ph-practiceapp.streamlit.app/" data-source="https://github.com/jp-panonce/ECE-Boards-Practice_st" data-title="ECE Board Exam Assistant"><i class="bi bi-mortarboard"></i><span>ECE Board Exam Assistant</span></a>
           <a href="tool-viewer.html?app=fun-with-flags" data-app="fun-with-flags" data-url="pages/fun_with_flags.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/fun_with_flags.html" data-title="Fun with Flags!" data-under-construction="true"><i class="bi bi-flag"></i><span>Fun with Flags!</span></a>
           <a href="tool-viewer.html?app=quiz-it" data-app="quiz-it" data-url="pages/quiz_it.html" data-source="https://github.com/jp-panonce/jp-panonce.github.io/blob/main/pages/quiz_it.html" data-title="Quiz it!" data-under-construction="true"><i class="bi bi-patch-question"></i><span>Quiz it!</span></a>
+          <a href="tool-viewer.html?app=circuit-sim" data-app="circuit-sim" data-url="https://www.falstad.com/circuit/circuitjs.html" data-source="#" data-title="Electric Circuit Simulator!" data-under-construction="false"><i class="bi bi-patch-question"></i><span>Electric Circuit Simulator</span></a>
         </div>
 
         <div class="tool-nav-group dashboards">
@@ -674,6 +700,13 @@
           <a href="tool-viewer.html?app=locked-up" data-app="locked-up" data-url="https://public.tableau.com/views/LockedUpAlookintoincarcerationpercountry/LOCKEDUP?:showVizHome=no" data-external="https://public.tableau.com/app/profile/john.paul.panonce/viz/LockedUpAlookintoincarcerationpercountry/LOCKEDUP" data-title="Locked Up: State of World Prisons"><i class="bi bi-bar-chart-line"></i><span>Locked Up: State of World Prisons</span></a>
           <a href="tool-viewer.html?app=philippine-climate" data-app="philippine-climate" data-url="https://public.tableau.com/views/PhilippineClimate/OVERVIEW?:showVizHome=no" data-external="https://public.tableau.com/app/profile/john.paul.panonce/viz/PhilippineClimate/OVERVIEW" data-title="Philippines: Climatological Overview"><i class="bi bi-cloud-sun"></i><span>Philippines: Climatological Overview</span></a>
         </div>
+
+        <div class="tool-nav-group dashboards">
+          <h2>External Tools</h2>
+        </div>
+
+
+
         <p class="tool-search-empty" id="tool-search-empty" hidden>No matching tools</p>
       </nav>
       <div class="tool-scroll-guide" id="tool-scroll-guide" aria-hidden="true">
@@ -739,15 +772,16 @@
       const appLinks = [...document.querySelectorAll('[data-app]')];
       const mobileMedia = window.matchMedia('(max-width: 767px)');
       const appDescriptions = {
-        'morse-branch': 'Learn and Practice your Morse Code skills.',
         'mempi': 'How many digits of pi can you recall?',
-        'guess-the-rgb': 'Got an eye for colors? Try guessing it\'s RGB value',
-        'randomizer': 'Your customizable randomizer',
-        'metronome': 'Keep in tempo with a simple metronome',
-        'color-picker': 'Pick colors for your development needs',
-        'meditate': 'Relax and take a breath',
-        'calculator': 'A large set of calculation tools',
+        'guess-the-rgb': 'Got an eye for colors? Try guessing its RGB value.',
+        'randomizer': 'Your customizable randomizer.',
+        'metronome': 'Keep in tempo with a simple metronome.',
+        'color-picker': 'Pick colors for your development needs.',
+        'meditate': 'Relax and take a breath.',
+        'calculator': 'A large set of calculation tools.',
         'chemical-equation-balancer': 'Balance chemical equations and learn more.',
+        'seeds': 'get a random inspiration, note from my personal collection :)',
+        'morse-branch': 'Learn and practice your Morse code skills.',
         'periodic-table': 'Explore elements and their key properties.',
         'trigo-functions': 'Visualize core trigonometric functions.',
         'ece-board-exam': 'Practice for the Philippine ECE boards.',
@@ -756,7 +790,8 @@
         'crayola-colors': 'Explore the history of Crayola colors.',
         'nw-pacific-typhoons': 'Analyze typhoon patterns in the NW Pacific.',
         'locked-up': 'Compare incarceration across countries.',
-        'philippine-climate': 'Explore Philippine climate patterns and trends.'
+        'philippine-climate': 'Explore Philippine climate patterns and trends.',
+        'circuit-sim': 'Experiment with analog and digital circuits.'
       };
       let scrollGuideTimer;
 
@@ -851,14 +886,25 @@
         }
 
         if (link.dataset.source && link.dataset.underConstruction !== 'true') {
-          sourceLink.className = 'tool-nav-action';
-          sourceLink.href = link.dataset.source;
-          sourceLink.target = '_blank';
-          sourceLink.rel = 'noopener noreferrer';
-          sourceLink.title = `View ${link.dataset.title} source on GitHub`;
-          sourceLink.setAttribute('aria-label', sourceLink.title);
-          sourceLink.innerHTML = '<i class="bi bi-github" aria-hidden="true"></i>';
-          actions.append(sourceLink);
+          const isExternalTool = link.dataset.source === '#' || (link.dataset.external && !link.dataset.source);
+
+          if (isExternalTool) {
+            const externalBadge = document.createElement('span');
+            externalBadge.className = 'tool-nav-external-indicator';
+            externalBadge.title = `${link.dataset.title} is an external tool`;
+            externalBadge.setAttribute('aria-label', externalBadge.title);
+            externalBadge.innerHTML = '<i class="bi bi-journal-text" aria-hidden="true"></i>';
+            link.appendChild(externalBadge);
+          } else {
+            sourceLink.className = 'tool-nav-action';
+            sourceLink.href = link.dataset.source;
+            sourceLink.target = '_blank';
+            sourceLink.rel = 'noopener noreferrer';
+            sourceLink.title = `View ${link.dataset.title} source on GitHub`;
+            sourceLink.setAttribute('aria-label', sourceLink.title);
+            sourceLink.innerHTML = '<i class="bi bi-github" aria-hidden="true"></i>';
+            actions.append(sourceLink);
+          }
         }
 
         detail.appendChild(description);
@@ -884,13 +930,15 @@
 
         appLinks.forEach((link) => {
           const title = normalizeSearchText(link.dataset.title);
-          const titleWords = title.split(' ');
+          const description = normalizeSearchText(appDescriptions[link.dataset.app] || '');
+          const searchableText = `${title} ${description}`.trim();
+          const searchableWords = searchableText.split(' ');
           const isMatch = terms.every((term) => {
-            if (title.includes(term)) {
+            if (searchableText.includes(term)) {
               return true;
             }
 
-            return term.length >= 5 && titleWords.some((word) => word.startsWith(term.slice(0, 5)));
+            return term.length >= 5 && searchableWords.some((word) => word.startsWith(term.slice(0, 5)));
           });
           link.parentElement.hidden = !isMatch;
           visibleCount += Number(isMatch);
